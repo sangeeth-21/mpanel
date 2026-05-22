@@ -14,21 +14,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
         run: |
           # Safe sanity checks (does not leak the secret key content)
-          if [ -z "${{ secrets.SSH_KEY }}" ]; then
+          if [ -z "$SSH_KEY" ]; then
             echo "::error::SSH_KEY secret is empty. Please set it in GitHub repository Secrets."
             exit 1
           fi
 
-          FIRST_LINE=$(echo "${{ secrets.SSH_KEY }}" | head -n 1)
+          FIRST_LINE=$(echo "$SSH_KEY" | head -n 1)
           if [[ ! "$FIRST_LINE" =~ ^-----BEGIN ]]; then
-            echo "::error::SSH_KEY does not start with standard private key header (e.g. -----BEGIN). You might have pasted a public key (e.g. ssh-rsa or ssh-ed25519) instead of a private key."
+            echo "::error::SSH_KEY does not start with standard private key header (e.g. -----BEGIN). You might have pasted a public key (e.g. ssh-rsa or ssh-ed25519) instead of a private key. Your secret's first line starts with: '${FIRST_LINE:0:25}'"
             exit 1
           fi
 
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
           echo "" >> ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
