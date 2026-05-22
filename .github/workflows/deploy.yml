@@ -15,6 +15,18 @@ jobs:
 
       - name: Setup SSH
         run: |
+          # Safe sanity checks (does not leak the secret key content)
+          if [ -z "${{ secrets.SSH_KEY }}" ]; then
+            echo "::error::SSH_KEY secret is empty. Please set it in GitHub repository Secrets."
+            exit 1
+          fi
+
+          FIRST_LINE=$(echo "${{ secrets.SSH_KEY }}" | head -n 1)
+          if [[ ! "$FIRST_LINE" =~ ^-----BEGIN ]]; then
+            echo "::error::SSH_KEY does not start with standard private key header (e.g. -----BEGIN). You might have pasted a public key (e.g. ssh-rsa or ssh-ed25519) instead of a private key."
+            exit 1
+          fi
+
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           echo "" >> ~/.ssh/id_ed25519
