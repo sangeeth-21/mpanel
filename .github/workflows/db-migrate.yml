@@ -17,9 +17,60 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
         run: |
-          # Validate SSH Key exists
+          # Safe sanity checks (does not leak the secret key content)
+          echo "=== SECRETS CONFIGURATION DIAGNOSTICS ==="
+          
+          # Check SSH_KEY
           if [ -z "$SSH_KEY" ]; then
-            echo "ERROR: SSH_KEY is empty."
+            echo "[-] SSH_KEY: MISSING"
+            exit_flag=1
+          else
+            echo "[+] SSH_KEY: PRESENT"
+            FIRST_LINE=$(echo "$SSH_KEY" | head -n 1)
+            echo "    Header detected: '${FIRST_LINE:0:30}...'"
+            if [[ ! "$FIRST_LINE" =~ ^-----BEGIN ]]; then
+              echo "    ERROR: SSH_KEY does not start with standard private key header (-----BEGIN)."
+              echo "    Please verify you copied the PRIVATE key, not the public key (.pub)."
+              exit_flag=1
+            fi
+          fi
+
+          # Check PORT
+          if [ -z "${{ secrets.PORT }}" ]; then
+            echo "[-] PORT: MISSING"
+            exit_flag=1
+          else
+            echo "[+] PORT: PRESENT"
+          fi
+
+          # Check HOST
+          if [ -z "${{ secrets.HOST }}" ]; then
+            echo "[-] HOST: MISSING"
+            exit_flag=1
+          else
+            echo "[+] HOST: PRESENT"
+          fi
+
+          # Check USERNAME
+          if [ -z "${{ secrets.USERNAME }}" ]; then
+            echo "[-] USERNAME: MISSING"
+            exit_flag=1
+          else
+            echo "[+] USERNAME: PRESENT"
+          fi
+
+          # Check TARGET_DIR
+          if [ -z "${{ secrets.TARGET_DIR }}" ]; then
+            echo "[-] TARGET_DIR: MISSING"
+            exit_flag=1
+          else
+            echo "[+] TARGET_DIR: PRESENT"
+          fi
+
+          echo "========================================="
+
+          if [ "$exit_flag" = "1" ]; then
+            echo "ERROR: One or more configuration secrets are missing or invalid. Migration aborted."
             exit 1
           fi
 
