@@ -706,6 +706,34 @@
             color: var(--accent-purple);
         }
 
+        #confirmPasswordGroup {
+            max-height: 0;
+            opacity: 0;
+            margin-bottom: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s, margin-bottom 0.4s;
+        }
+
+        .signup-active #confirmPasswordGroup {
+            max-height: 70px;
+            opacity: 1;
+            margin-bottom: 20px;
+        }
+
+        #formOptions {
+            max-height: 50px;
+            opacity: 1;
+            overflow: hidden;
+            transition: max-height 0.4s, opacity 0.4s, margin-bottom 0.4s;
+        }
+
+        .signup-active #formOptions {
+            max-height: 0;
+            opacity: 0;
+            margin-bottom: 0;
+            pointer-events: none;
+        }
+
         /* Keyframes Animations */
         @keyframes floatLeft {
             0% { transform: translateX(-10px) translateY(0); }
@@ -806,24 +834,31 @@
                         </div>
                     </div>
                     <div class="form-header">
-                        <h1>Holla,<br>Welcome Back</h1>
-                        <p>Hey, welcome back to your special place</p>
+                        <h1 id="formTitle">Holla,<br>Welcome Back</h1>
+                        <p id="formSub">Hey, welcome back to your special place</p>
                     </div>
 
                     <?php if ($error): ?>
-                        <div class="alert-error"><?= htmlspecialchars($error) ?></div>
+                        <div class="alert-error" id="errorAlert"><?= htmlspecialchars($error) ?></div>
                     <?php endif; ?>
+                    <div class="alert-error" id="clientErrorAlert" style="display: none;"></div>
 
-                    <form method="POST" action="<?= site_url('/') ?>">
+                    <form method="POST" action="<?= site_url('/') ?>" id="authForm">
+                        <input type="hidden" name="action" id="formAction" value="login">
+                        
                         <div class="form-group">
-                            <input class="form-input" type="text" id="username" name="username" placeholder="stanley@gmail.com" required autocomplete="off">
+                            <input class="form-input" type="email" id="email" name="email" placeholder="stanley@gmail.com" required autocomplete="off">
                         </div>
 
                         <div class="form-group">
                             <input class="form-input" type="password" id="password" name="password" placeholder="••••••••••••" required>
                         </div>
 
-                        <div class="form-options">
+                        <div class="form-group" id="confirmPasswordGroup">
+                            <input class="form-input" type="password" id="confirm_password" name="confirm_password" placeholder="confirm password">
+                        </div>
+
+                        <div class="form-options" id="formOptions">
                             <label class="remember-me">
                                 <input type="checkbox" name="remember" id="remember" checked>
                                 <span class="checkbox-custom"></span>
@@ -832,11 +867,11 @@
                             <a href="#" class="forgot-password">Forgot Password?</a>
                         </div>
 
-                        <button class="btn-submit" type="submit">Sign In</button>
+                        <button class="btn-submit" type="submit" id="btnSubmit">Sign In</button>
                     </form>
 
-                    <div class="footer-text">
-                        Don't have an account? <a href="#">Sign Up</a>
+                    <div class="footer-text" id="formFooter">
+                        Don't have an account? <a href="#" id="toggleAuthMode">Sign Up</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -1015,12 +1050,88 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             htmlElement.setAttribute('data-theme', savedTheme);
 
-            themeToggleBtn.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const currentTheme = htmlElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    htmlElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
+
+            // Auth mode toggle script (Login <-> Signup)
+            const toggleAuthModeBtn = document.getElementById('toggleAuthMode');
+            const panelLeft = document.querySelector('.panel-left');
+            const formTitle = document.getElementById('formTitle');
+            const formSub = document.getElementById('formSub');
+            const formAction = document.getElementById('formAction');
+            const btnSubmit = document.getElementById('btnSubmit');
+            const formFooter = document.getElementById('formFooter');
+            const confirmPassword = document.getElementById('confirm_password');
+            const clientErrorAlert = document.getElementById('clientErrorAlert');
+            const errorAlert = document.getElementById('errorAlert');
+
+            if (toggleAuthModeBtn) {
+                toggleAuthModeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (clientErrorAlert) clientErrorAlert.style.display = 'none';
+                    if (errorAlert) errorAlert.style.display = 'none';
+                    
+                    const isLoginMode = formAction.value === 'login';
+                    if (isLoginMode) {
+                        // Switch to Signup
+                        panelLeft.classList.add('signup-active');
+                        formTitle.innerHTML = 'Holla,<br>Create Account';
+                        formSub.textContent = 'Hey, sign up to create your special place';
+                        formAction.value = 'signup';
+                        btnSubmit.textContent = 'Sign Up';
+                        formFooter.innerHTML = 'Already have an account? <a href="#" id="toggleAuthMode">Sign In</a>';
+                        confirmPassword.setAttribute('required', 'required');
+                    } else {
+                        // Switch to Login
+                        panelLeft.classList.remove('signup-active');
+                        formTitle.innerHTML = 'Holla,<br>Welcome Back';
+                        formSub.textContent = 'Hey, welcome back to your special place';
+                        formAction.value = 'login';
+                        btnSubmit.textContent = 'Sign In';
+                        formFooter.innerHTML = 'Don\'t have an account? <a href="#" id="toggleAuthMode">Sign Up</a>';
+                        confirmPassword.removeAttribute('required');
+                    }
+                    // Re-register listener on dynamically recreated link
+                    setTimeout(bindToggleListener, 50);
+                });
+            }
+
+            function bindToggleListener() {
+                const newToggleBtn = document.getElementById('toggleAuthMode');
+                if (newToggleBtn && newToggleBtn !== toggleAuthModeBtn) {
+                    newToggleBtn.replaceWith(newToggleBtn.cloneNode(true));
+                    document.getElementById('toggleAuthMode').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        toggleAuthModeBtn.click();
+                    });
+                }
+            }
+
+            // Client-side password verification
+            const authForm = document.getElementById('authForm');
+            if (authForm) {
+                authForm.addEventListener('submit', (e) => {
+                    if (clientErrorAlert) clientErrorAlert.style.display = 'none';
+
+                    if (formAction.value === 'signup') {
+                        const pass = document.getElementById('password').value;
+                        const confirmPass = confirmPassword.value;
+                        if (pass !== confirmPass) {
+                            e.preventDefault();
+                            if (clientErrorAlert) {
+                                clientErrorAlert.textContent = 'Passwords do not match.';
+                                clientErrorAlert.style.display = 'block';
+                            }
+                        }
+                    }
+                });
+            }
 
             // Splash Loader Script
             const splashScreen = document.getElementById('splashScreen');

@@ -23,6 +23,17 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader
 
+      - name: Generate .env File
+        run: |
+          cat <<EOF > .env
+          CI_ENVIRONMENT = production
+          database.default.hostname = "${{ secrets.DB_HOST }}"
+          database.default.database = "${{ secrets.DB_NAME }}"
+          database.default.username = "${{ secrets.DB_USER }}"
+          database.default.password = "${{ secrets.DB_PASS }}"
+          database.default.DBDriver = MySQLi
+          EOF
+
       - name: Setup SSH
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}

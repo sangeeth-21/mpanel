@@ -1,0 +1,35 @@
+name: Run Database Migrations
+
+on:
+  workflow_run:
+    workflows: ["Deploy to MilesWeb"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_type == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Setup SSH Key
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        run: |
+          # Validate SSH Key exists
+          if [ -z "$SSH_KEY" ]; then
+            echo "ERROR: SSH_KEY is empty."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "" >> ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      - name: Execute Migration Remote Command
+        run: |
+          echo "Connecting to server to run migrations..."
+          ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && php spark migrate"
