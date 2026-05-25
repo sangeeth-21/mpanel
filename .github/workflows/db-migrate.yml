@@ -82,4 +82,4 @@ jobs:
       - name: Execute Migration Remote Command
         run: |
           echo "Connecting to server to run migrations..."
-          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && php spark migrate"
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && echo '=== MIGRATION STATUS BEFORE ===' && php spark migrate:status && echo '=== RUNNING MIGRATIONS ===' && php spark migrate -f && echo '=== MIGRATION STATUS AFTER ===' && php spark migrate:status"
