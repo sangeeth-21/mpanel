@@ -10,7 +10,7 @@ class Home extends BaseController
         $error = '';
         $success = '';
 
-        // Handle POST requests (Login or Signup)
+        // Handle POST requests (Login or Signup via Database)
         if ($this->request->is('post')) {
             $action = $this->request->getPost('action');
             $email = $this->request->getPost('email');
