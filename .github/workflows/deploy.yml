@@ -106,3 +106,8 @@ jobs:
             -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./ \
             ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/${{ secrets.TARGET_DIR }}
+
+      - name: Run Database Migrations
+        run: |
+          echo "Connecting to server to run migrations..."
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && php spark migrate -f"
