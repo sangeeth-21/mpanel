@@ -142,40 +142,80 @@
             position: relative;
         }
 
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+        /* Theme Switch Toggle Button */
+        .theme-switch-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        .theme-switch-container {
+            width: 56px;
+            height: 30px;
+            background-color: var(--input-bg);
             border: 1px solid var(--input-border);
-            background: var(--input-bg);
+            border-radius: 99px;
+            position: relative;
             cursor: pointer;
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch-container:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.1);
+        }
+
+        .theme-switch-thumb {
+            width: 22px;
+            height: 22px;
+            background-color: var(--text-primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 100;
-            transition: all 0.2s ease;
+            overflow: hidden;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-purple);
+        [data-theme="dark"] .theme-switch-thumb {
+            transform: translateX(26px) rotate(360deg);
         }
 
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-primary);
-            transition: transform 0.3s ease;
+        .theme-switch-thumb svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--left-bg);
+            fill: none;
+            position: absolute;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .theme-toggle .sun-icon { display: none; }
-        .theme-toggle .moon-icon { display: block; }
-        [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
-        [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+        .theme-switch-thumb .sun-icon-thumb {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .theme-switch-thumb .moon-icon-thumb {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        [data-theme="dark"] .theme-switch-thumb .sun-icon-thumb {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        [data-theme="dark"] .theme-switch-thumb .moon-icon-thumb {
+            opacity: 1;
+            transform: scale(1);
+        }
 
         /* Left Side: Form Container */
         .panel-left {
@@ -745,25 +785,7 @@
         </div>
     </div>
 
-    <!-- Theme Switch Toggle Button -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-        <!-- Sun icon -->
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <!-- Moon icon -->
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
+
 
     <div class="wrapper">
         <!-- Left Side: Forms / Dashboard Console -->
@@ -775,6 +797,14 @@
 
             <?php if (!$is_logged_in): ?>
                 <div class="form-content">
+                    <div class="theme-switch-wrapper">
+                        <div class="theme-switch-container" id="themeToggle" aria-label="Toggle Theme">
+                            <div class="theme-switch-thumb">
+                                <svg class="sun-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                <svg class="moon-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-header">
                         <h1>Holla,<br>Welcome Back</h1>
                         <p>Hey, welcome back to your special place</p>
@@ -811,6 +841,14 @@
                 </div>
             <?php else: ?>
                 <div class="dashboard-container">
+                    <div class="theme-switch-wrapper" style="margin-bottom: 16px;">
+                        <div class="theme-switch-container" id="themeToggle" aria-label="Toggle Theme">
+                            <div class="theme-switch-thumb">
+                                <svg class="sun-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                <svg class="moon-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
                     <div class="dashboard-header">
                         <div>
                             <h1 class="header-title" style="font-size: 2rem; font-weight: 800;">Portal Active</h1>
