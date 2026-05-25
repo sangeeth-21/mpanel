@@ -99,11 +99,10 @@ jobs:
           echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
           echo "" >> ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p ${{ secrets.PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy Files
         run: |
           rsync -avz --delete \
-            -e "ssh -p ${{ secrets.PORT }}" \
+            -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./ \
             ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/${{ secrets.TARGET_DIR }}
