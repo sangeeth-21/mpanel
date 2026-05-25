@@ -392,11 +392,12 @@
             color: var(--accent-purple);
             text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .footer-text a:hover {
-            opacity: 0.8;
+            opacity: 0.9;
+            text-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
         }
 
         /* Right Side: Graphic Illustration */
