@@ -115,50 +115,49 @@
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        /* Search Bar */
+        /* Search Trigger button in Header */
         .stiqr-search-wrapper {
             display: flex;
             align-items: center;
             background-color: var(--bg-card);
             border-radius: 30px;
-            padding: 4px 4px 4px 18px;
+            padding: 8px 8px 8px 18px;
             width: 100%;
             max-width: 440px;
             box-shadow: var(--shadow-sm);
-            transition: background-color var(--transition-speed) ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background-color var(--transition-speed) ease, border-color 0.2s ease;
         }
 
-        .stiqr-search-input {
+        .stiqr-search-wrapper:hover {
+            border-color: var(--text-muted);
+        }
+
+        .stiqr-search-placeholder-text {
             flex: 1;
-            border: none;
-            background: transparent;
-            outline: none;
-            font-family: var(--font-outfit);
             font-size: 0.95rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .stiqr-search-input::placeholder {
             color: var(--text-muted);
+            font-weight: 500;
+            user-select: none;
         }
 
         .stiqr-search-btn {
-            width: 38px;
-            height: 38px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background-color: #000;
             color: #fff;
             border: none;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.2s ease;
         }
 
-        .stiqr-search-btn:hover {
-            transform: scale(1.05);
+        body.dark-mode .stiqr-search-btn {
+            background-color: #fff;
+            color: #000;
         }
 
         /* Header Actions */
@@ -202,7 +201,12 @@
             stroke: var(--accent-red);
         }
 
-        /* User Auth Pill */
+        /* User Auth Pill and Dropdown Container */
+        .profile-dropdown-wrapper {
+            position: relative;
+            z-index: 100;
+        }
+
         .user-auth-pill {
             display: flex;
             align-items: center;
@@ -214,6 +218,7 @@
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
+            user-select: none;
             transition: transform 0.2s ease, background-color var(--transition-speed) ease;
         }
 
@@ -228,21 +233,56 @@
             object-fit: cover;
         }
 
-        .user-logout-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent-red);
-            font-weight: 700;
-            font-size: 0.8rem;
-            margin-left: 8px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: opacity 0.2s ease;
+        /* Profile Dropdown Menu Styling */
+        .profile-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 12px 8px;
+            width: 200px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 999;
         }
 
-        .user-logout-btn:hover {
-            opacity: 0.8;
+        .profile-dropdown-menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .profile-dropdown-menu a:hover {
+            background-color: var(--bg-body);
+        }
+
+        .profile-dropdown-menu .dropdown-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 8px 0;
+        }
+
+        .profile-dropdown-menu a.logout-link {
+            color: var(--accent-red);
         }
 
         /* Main Dashboard Grid */
@@ -304,6 +344,7 @@
             letter-spacing: -1.5px;
             margin: 20px 0;
             color: var(--text-primary);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         /* Art guide row */
@@ -312,6 +353,7 @@
             align-items: center;
             gap: 16px;
             margin-bottom: 24px;
+            transition: opacity 0.3s ease;
         }
 
         .guide-num {
@@ -443,6 +485,7 @@
             filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.15));
             border-radius: 12px;
             z-index: 2;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         /* Graphic Circles / Guides surrounding Framed Poster */
@@ -768,6 +811,143 @@
             transform: scale(1.05);
         }
 
+        /* Footer Styling */
+        .stiqr-footer {
+            margin-top: 48px;
+            padding: 32px 0 0 0;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 24px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        .stiqr-footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stiqr-footer-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .stiqr-footer-links {
+            list-style: none;
+        }
+
+        .stiqr-footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .stiqr-footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .stiqr-footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .newsletter-input {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            font-family: var(--font-outfit);
+            outline: none;
+            flex: 1;
+        }
+
+        .newsletter-btn {
+            background-color: var(--text-primary);
+            color: var(--bg-card);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .newsletter-btn:hover {
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Sticky bottom nav bar for mobile view */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 480px;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 26px;
+            padding: 8px 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        body.dark-mode .mobile-bottom-nav {
+            background-color: rgba(31, 41, 55, 0.85);
+            border-color: rgba(55, 65, 81, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 16px;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .mobile-nav-item:hover {
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+        }
+
+        .mobile-nav-icon {
+            margin-bottom: 3px;
+        }
+
         /* Asynchronous Pop-up Authentication Modal style */
         .auth-modal-overlay {
             position: fixed;
@@ -846,137 +1026,81 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .auth-modal-header {
-            margin-bottom: 24px;
-        }
-
-        .auth-modal-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-
-        .auth-modal-sub {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            font-weight: 500;
-        }
-
-        .auth-form-group {
-            margin-bottom: 16px;
-        }
-
-        .auth-form-input {
+        /* Full page Profile section templates / layouts (Popup modal) */
+        .generic-info-modal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 36px;
             width: 100%;
-            padding: 14px 18px;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Search Popup Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10000;
+        }
+
+        .search-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search-overlay-card {
+            width: 90%;
+            max-width: 600px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .search-overlay.open .search-overlay-card {
+            transform: scale(1);
+        }
+
+        .search-overlay-input-wrapper {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .search-overlay-input {
+            flex: 1;
+            padding: 14px 20px;
             border-radius: 14px;
             border: 1px solid var(--border-color);
             background-color: var(--bg-card-alt);
             color: var(--text-primary);
             font-family: var(--font-outfit);
-            font-weight: 500;
-            outline: none;
-            font-size: 0.95rem;
-            transition: border-color 0.2s ease, background-color var(--transition-speed) ease;
-        }
-
-        .auth-form-input:focus {
-            border-color: var(--text-primary);
-        }
-
-        .auth-modal-footer {
-            margin-top: 24px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .auth-submit-btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 14px;
-            background-color: var(--text-primary);
-            color: var(--bg-card);
-            border: none;
-            font-weight: 700;
             font-size: 1rem;
-            cursor: pointer;
-            transition: opacity 0.2s ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .auth-submit-btn:hover {
-            opacity: 0.9;
-        }
-
-        .auth-submit-btn.loading {
-            pointer-events: none;
-            opacity: 0.8;
-        }
-
-        .auth-submit-btn.loading::after {
-            content: "";
-            width: 16px;
-            height: 16px;
-            border: 2px solid currentColor;
-            border-right-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.75s linear infinite;
-        }
-
-        /* OTP Input Verification Grid */
-        .otp-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-            margin: 20px 0;
-        }
-
-        .otp-box {
-            width: 100%;
-            height: 52px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card-alt);
-            color: var(--text-primary);
-            font-family: var(--font-mono);
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-align: center;
             outline: none;
-            transition: border-color 0.2s ease;
         }
 
-        .otp-box:focus {
+        .search-overlay-input:focus {
             border-color: var(--text-primary);
-        }
-
-        /* Error/Success Alert Boxes */
-        .auth-alert {
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .auth-alert.error {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .auth-alert.success {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
         /* Responsive Design */
@@ -995,11 +1119,22 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
             .stiqr-container {
-                padding: 16px;
+                padding: 20px 20px 80px 20px;
             }
             .stiqr-header {
                 margin-bottom: 24px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .stiqr-search-wrapper, .stiqr-header-actions .action-circle-btn, .stiqr-header-actions .favorite {
+                display: none;
+            }
+            .mobile-bottom-nav {
+                display: flex;
             }
             .hero-card {
                 flex-direction: column;
@@ -1027,6 +1162,9 @@
                 width: 290px;
                 height: 290px;
             }
+            .stiqr-footer-col {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
@@ -1035,16 +1173,16 @@
     <div class="stiqr-container">
         <!-- Header -->
         <header class="stiqr-header">
-            <div class="stiqr-logo">
+            <div class="stiqr-logo" onclick="window.location.reload()" style="cursor: pointer;">
                 <span class="stiqr-logo-icon">s</span>
                 stiqr.
             </div>
 
-            <!-- Search wrapper -->
-            <div class="stiqr-search-wrapper" onclick="handleRestrictedAction(event)">
-                <input type="text" class="stiqr-search-input" placeholder="Search posters..." disabled>
+            <!-- Search wrapper -> triggers popup modal -->
+            <div class="stiqr-search-wrapper" onclick="openSearchOverlay()">
+                <span class="stiqr-search-placeholder-text">Search wall posters...</span>
                 <button class="stiqr-search-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
@@ -1087,19 +1225,28 @@
                     </svg>
                 </button>
 
-                <!-- Profile Badge / Auth State -->
-                <?php if ($is_logged_in): ?>
-                    <div class="user-auth-pill" title="Active Session: <?= htmlspecialchars($user) ?>">
-                        <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Avatar">
-                        <span>Ryman Alex</span>
-                        <button class="user-logout-btn" onclick="window.location.href='<?= site_url('/?action=logout') ?>'">Logout</button>
-                    </div>
-                <?php else: ?>
-                    <div class="user-auth-pill" onclick="openAuthModal('login')">
-                        <img class="user-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100" alt="Avatar">
-                        <span>Sign In</span>
-                    </div>
-                <?php endif; ?>
+                <!-- Profile Badge / Dropdown Menu -->
+                <div class="profile-dropdown-wrapper">
+                    <?php if ($is_logged_in): ?>
+                        <div class="user-auth-pill" id="profileBadgePill" title="Active Session: <?= htmlspecialchars($user) ?>">
+                            <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Avatar">
+                            <span>Ryman Alex</span>
+                        </div>
+                        <div class="profile-dropdown-menu" id="profileDropdown">
+                            <a onclick="openInfoModal('orders')">📦 My Orders</a>
+                            <a onclick="openInfoModal('settings')">⚙️ Settings</a>
+                            <a onclick="openInfoModal('about')">ℹ️ About stiqr.</a>
+                            <a onclick="openInfoModal('support')">💬 Help & Support</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="<?= site_url('/?action=logout') ?>" class="logout-link">🚪 Sign Out</a>
+                        </div>
+                    <?php else: ?>
+                        <div class="user-auth-pill" onclick="openAuthModal('login')">
+                            <img class="user-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100" alt="Avatar">
+                            <span>Sign In</span>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </header>
 
@@ -1109,27 +1256,19 @@
             <!-- Left Side Area -->
             <div class="left-column">
                 
-                <!-- Hero card showcase -->
+                <!-- Hero card showcase (autoscroll sliders) -->
                 <section class="hero-card">
                     <div class="hero-details">
-                        <span class="hero-tag">
-                            <!-- Custom grid icon -->
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="opacity: 0.7;">
-                                <circle cx="4" cy="4" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="20" cy="4" r="2"></circle>
-                                <circle cx="4" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="20" cy="12" r="2"></circle>
-                                <circle cx="4" cy="20" r="2"></circle><circle cx="12" cy="20" r="2"></circle><circle cx="20" cy="20" r="2"></circle>
-                            </svg>
-                            Art is Eternal
-                        </span>
+                        <span class="hero-tag" id="heroTag">Art is Eternal</span>
 
-                        <h1 class="hero-title">
+                        <h1 class="hero-title" id="heroTitle">
                             Inspiring Canvas<br>Artistry.
                         </h1>
 
-                        <div class="hero-guide-row">
-                            <span class="guide-num">01</span>
+                        <div class="hero-guide-row" id="heroGuide">
+                            <span class="guide-num" id="heroNum">01</span>
                             <span class="guide-line"></span>
-                            <div class="guide-desc">
+                            <div class="guide-desc" id="heroDesc">
                                 <strong>Curated Prints</strong>
                                 Transforming your dream spaces with high-end premium wallposters and curated art prints.
                             </div>
@@ -1161,15 +1300,16 @@
                         <div class="orbit-dot dot-2"></div>
                         <div class="orbit-dot dot-3"></div>
                         <img class="floating-headphones" 
+                             id="heroImage"
                              src="<?= base_url('assets/poster_hero.png') ?>" 
                              onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_hero.png') ?>';" 
                              alt="Premium Framed Wall Poster">
                         
-                        <!-- Mini slider navigation badge -->
-                        <div class="slider-controls" onclick="alert('Cycling posters catalog...')">
+                        <!-- Manual slide trigger control -->
+                        <div class="slider-controls" onclick="manualCycleSlider()">
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 18 2 12 8 6"></polyline>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                                <polyline points="19 19 12 12 19 5"></polyline>
                             </svg>
                         </div>
                     </div>
@@ -1290,7 +1430,88 @@
             </div>
 
         </main>
+
+        <!-- Footer -->
+        <footer class="stiqr-footer">
+            <div class="stiqr-footer-col">
+                <div class="stiqr-logo" style="margin-bottom: 12px;">
+                    <span class="stiqr-logo-icon" style="width: 28px; height: 28px; font-size: 1rem; border-radius: 8px;">s</span>
+                    stiqr.
+                </div>
+                <p style="font-size: 0.85rem; max-width: 240px; line-height: 1.5;">Curating premium quality wall posters and framed arts for aesthetic spaces.</p>
+            </div>
+            
+            <div class="stiqr-footer-col">
+                <h4 class="stiqr-footer-title">Products</h4>
+                <ul class="stiqr-footer-links">
+                    <li><a onclick="handleRestrictedAction(event)">Abstract Posters</a></li>
+                    <li><a onclick="handleRestrictedAction(event)">Cyberpunk Prints</a></li>
+                    <li><a onclick="handleRestrictedAction(event)">Minimalist Art</a></li>
+                    <li><a onclick="handleRestrictedAction(event)">Vintage Bauhaus</a></li>
+                </ul>
+            </div>
+
+            <div class="stiqr-footer-col">
+                <h4 class="stiqr-footer-title">Company</h4>
+                <ul class="stiqr-footer-links">
+                    <li><a onclick="openInfoModal('about')">About Us</a></li>
+                    <li><a onclick="openInfoModal('support')">Help & Support</a></li>
+                    <li><a onclick="handleRestrictedAction(event)">Careers</a></li>
+                    <li><a onclick="handleRestrictedAction(event)">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="stiqr-footer-col" style="min-width: 260px;">
+                <h4 class="stiqr-footer-title">Newsletter</h4>
+                <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 10px;">Subscribe to get notified about new art arrivals and discounts.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 stiqr. All rights reserved. Curated with passion for beautiful walls.
+            </div>
+        </footer>
     </div>
+
+    <!-- Mobile view sticky bottom navigation bar -->
+    <nav class="mobile-bottom-nav">
+        <a onclick="window.location.reload()" class="mobile-nav-item">
+            <!-- Home Icon -->
+            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a onclick="openSearchOverlay()" class="mobile-nav-item">
+            <!-- Search Icon -->
+            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Search</span>
+        </a>
+        <a onclick="handleRestrictedAction(event)" class="mobile-nav-item">
+            <!-- Cart Icon -->
+            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Cart</span>
+        </a>
+        <a onclick="handleMobileProfileClick(event)" class="mobile-nav-item">
+            <!-- Profile Icon -->
+            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profile</span>
+        </a>
+    </nav>
 
     <!-- Asynchronous Popup Authentication Modal overlay -->
     <div class="auth-modal-overlay" id="authModal">
@@ -1414,6 +1635,34 @@
         </div>
     </div>
 
+    <!-- Full-screen Search Overlay popup modal -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-card">
+            <div class="auth-modal-header" style="text-align: left; position: relative;">
+                <h2 class="auth-modal-title" style="font-size: 1.6rem;">Search stiqr. Catalog</h2>
+                <p class="auth-modal-sub">Discover high-end framed art & wall poster prints.</p>
+                <button class="auth-modal-close" style="top: -6px; right: -6px;" onclick="closeSearchOverlay()">&times;</button>
+            </div>
+            <div class="search-overlay-input-wrapper">
+                <input type="text" class="search-overlay-input" id="searchOverlayInput" placeholder="Type name, color, style or genre...">
+                <button class="auth-submit-btn" style="width: auto; padding: 14px 28px;" onclick="performSearchOverlayQuery()">Search</button>
+            </div>
+            <div style="margin-top: 24px; text-align: left; font-size: 0.85rem; color: var(--text-muted);">
+                <strong>Popular searches:</strong> Cyberpunk Neon, Classic Bauhaus, Botanical Beige, Minimalism, Pastel Geometric
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic Info Modal (Orders, Settings, About, Support) -->
+    <div class="auth-modal-overlay" id="infoModalOverlay">
+        <div class="generic-info-modal-card">
+            <button class="auth-modal-close" onclick="closeInfoModal()">&times;</button>
+            <div id="infoModalContent">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const isUserLoggedIn = <?= $is_logged_in ? 'true' : 'false' ?>;
@@ -1479,12 +1728,233 @@
                 }
             }
 
+            // 4. Search Overlay popup triggers
+            const searchOverlay = document.getElementById('searchOverlay');
+            const searchOverlayInput = document.getElementById('searchOverlayInput');
+
+            window.openSearchOverlay = function() {
+                searchOverlay.classList.add('open');
+                setTimeout(() => {
+                    searchOverlayInput.focus();
+                }, 150);
+            }
+
+            window.closeSearchOverlay = function() {
+                searchOverlay.classList.remove('open');
+                searchOverlayInput.value = '';
+            }
+
+            window.performSearchOverlayQuery = function() {
+                const query = searchOverlayInput.value.trim();
+                if (query) {
+                    alert(`Searching catalog for: "${query}"...`);
+                    closeSearchOverlay();
+                } else {
+                    searchOverlayInput.focus();
+                }
+            }
+
+            // Support enter key on search input
+            searchOverlayInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    performSearchOverlayQuery();
+                }
+            });
+
+            // 5. Autoscrolling Hero Product Slider
+            const slides = [
+                {
+                    num: '01',
+                    tag: 'Art is Eternal',
+                    title: 'Inspiring Canvas<br>Artistry.',
+                    desc: 'Transforming your dream spaces with high-end premium wallposters and curated art prints.',
+                    image: '<?= base_url("assets/poster_hero.png") ?>',
+                    imageFallback: '<?= base_url("public/assets/poster_hero.png") ?>'
+                },
+                {
+                    num: '02',
+                    tag: 'Vibrant & Bold',
+                    title: 'Retro Neon<br>Cyberpunk.',
+                    desc: 'Dive into high-contrast futuristic urban streets with our glowing cyberpunk framed series.',
+                    image: '<?= base_url("assets/poster_cyberpunk.png") ?>',
+                    imageFallback: '<?= base_url("public/assets/poster_cyberpunk.png") ?>'
+                },
+                {
+                    num: '03',
+                    tag: 'Classic Bauhaus',
+                    title: 'Geometric Form<br>& Color.',
+                    desc: 'Experience primary colors and typographic balance with classic Weimar Bauhaus museum prints.',
+                    image: '<?= base_url("assets/poster_bauhaus.png") ?>',
+                    imageFallback: '<?= base_url("public/assets/poster_bauhaus.png") ?>'
+                }
+            ];
+
+            let currentSlideIndex = 0;
+            let slideInterval = setInterval(cycleSlider, 5000); // Autoplay every 5s
+
+            const heroTag = document.getElementById('heroTag');
+            const heroTitle = document.getElementById('heroTitle');
+            const heroNum = document.getElementById('heroNum');
+            const heroDesc = document.getElementById('heroDesc');
+            const heroImage = document.getElementById('heroImage');
+
+            function cycleSlider() {
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                updateSliderView();
+            }
+
+            window.manualCycleSlider = function() {
+                clearInterval(slideInterval);
+                cycleSlider();
+                slideInterval = setInterval(cycleSlider, 5000); // Reset timer
+            }
+
+            function updateSliderView() {
+                const active = slides[currentSlideIndex];
+                
+                // Fade out text elements
+                heroTag.style.opacity = '0';
+                heroTitle.style.opacity = '0';
+                heroDesc.style.opacity = '0';
+                heroImage.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Update content
+                    heroTag.textContent = active.tag;
+                    heroTitle.innerHTML = active.title;
+                    heroNum.textContent = active.num;
+                    heroDesc.innerHTML = `<strong>Curated Prints</strong>${active.desc}`;
+                    
+                    // Reset errors and change image src
+                    heroImage.onerror = function() {
+                        this.onerror = null;
+                        this.src = active.imageFallback;
+                    };
+                    heroImage.src = active.image;
+                    
+                    // Fade in text elements
+                    heroTag.style.opacity = '1';
+                    heroTitle.style.opacity = '1';
+                    heroDesc.style.opacity = '1';
+                    heroImage.style.opacity = '1';
+                }, 300);
+            }
+
+            // 6. User Profile Dropdown toggles
+            const profileBadgePill = document.getElementById('profileBadgePill');
+            const profileDropdown = document.getElementById('profileDropdown');
+
+            if (profileBadgePill && profileDropdown) {
+                profileBadgePill.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('show');
+                });
+                
+                // Hide dropdown when clicking elsewhere
+                document.addEventListener('click', () => {
+                    profileDropdown.classList.remove('show');
+                });
+            }
+
+            // 7. Generic info popup models (Orders, Settings, About, Support)
+            const infoModalOverlay = document.getElementById('infoModalOverlay');
+            const infoModalContent = document.getElementById('infoModalContent');
+
+            window.openInfoModal = function(section) {
+                let html = '';
+                if (section === 'orders') {
+                    html = `
+                        <h2 class="auth-modal-title" style="margin-bottom: 20px;">📦 My Orders</h2>
+                        <div style="max-height: 300px; overflow-y: auto; text-align: left; font-size: 0.95rem; line-height: 1.6;">
+                            <div style="padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px;">
+                                <div style="display:flex; justify-content:space-between; font-weight:700;">
+                                    <span>Order #STQ-88321</span>
+                                    <span style="color:#10b981;">Delivered</span>
+                                </div>
+                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-20 | Total: $48.50</div>
+                                <p style="font-weight: 500;">- 1x Vintage Bauhaus Geometric (Framed Black)</p>
+                            </div>
+                            <div style="padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; opacity:0.85;">
+                                <div style="display:flex; justify-content:space-between; font-weight:700;">
+                                    <span>Order #STQ-88204</span>
+                                    <span style="color:var(--text-muted);">Cancelled</span>
+                                </div>
+                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-12 | Total: $125.00</div>
+                                <p style="font-weight: 500;">- 2x Vibrant Neon Cyberpunk Series</p>
+                            </div>
+                        </div>
+                    `;
+                } 
+                else if (section === 'settings') {
+                    html = `
+                        <h2 class="auth-modal-title" style="margin-bottom: 20px;">⚙️ Account Settings</h2>
+                        <div style="text-align: left; font-size: 0.95rem;">
+                            <div class="auth-form-group">
+                                <label style="font-weight:700; font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Notification Preferences</label>
+                                <div style="display:flex; gap: 8px; align-items:center; margin-top:8px;">
+                                    <input type="checkbox" id="sett_notif" checked style="width:16px; height:16px;">
+                                    <label for="sett_notif">Email me about new poster collections</label>
+                                </div>
+                            </div>
+                            <div class="auth-form-group" style="margin-top:16px;">
+                                <label style="font-weight:700; font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Account Actions</label>
+                                <button class="auth-submit-btn" style="margin-top:8px; background-color: var(--accent-red); color: white;" onclick="alert('Session cleanup activated. Password reset request sent.')">Reset Passcode</button>
+                            </div>
+                        </div>
+                    `;
+                } 
+                else if (section === 'about') {
+                    html = `
+                        <h2 class="auth-modal-title" style="margin-bottom: 16px;">ℹ️ About stiqr.</h2>
+                        <div style="text-align: left; font-size: 0.95rem; line-height: 1.6;">
+                            <p style="margin-bottom:12px;">stiqr. is a boutique framed poster e-commerce platform curated for modern art collectors and aesthetic spacing design enthusiasts.</p>
+                            <p style="margin-bottom:12px;">All poster prints are rendered on heavyweight museum-grade matte canvas and hand-framed by local master craftsmen.</p>
+                            <div style="background-color: var(--bg-card-alt); padding: 12px; border-radius:12px; font-size:0.8rem; color:var(--text-muted);">
+                                Version 2.4.0 (Electric Poster Release)<br>
+                                Powered by CodeIgniter 4 secure framework.
+                            </div>
+                        </div>
+                    `;
+                } 
+                else if (section === 'support') {
+                    html = `
+                        <h2 class="auth-modal-title" style="margin-bottom: 16px;">💬 Customer Support</h2>
+                        <div style="text-align: left; font-size: 0.95rem; line-height: 1.5;">
+                            <p style="margin-bottom:16px;">Have issues with email verification, shipping, or refunds? Our support desk is open 24/7.</p>
+                            <div class="auth-form-group">
+                                <textarea class="auth-form-input" placeholder="Type your message to support..." style="height:100px; resize:none;"></textarea>
+                            </div>
+                            <button class="auth-submit-btn" onclick="alert('Support ticket submitted! We will email you back within 12 hours.'); closeInfoModal();">Send Message</button>
+                        </div>
+                    `;
+                }
+
+                infoModalContent.innerHTML = html;
+                infoModalOverlay.classList.add('open');
+            }
+
+            window.closeInfoModal = function() {
+                infoModalOverlay.classList.remove('open');
+                infoModalContent.innerHTML = '';
+            }
+
+            // Mobile profile click handles
+            window.handleMobileProfileClick = function(e) {
+                if (!isUserLoggedIn) {
+                    openAuthModal('login');
+                } else {
+                    openInfoModal('orders');
+                }
+            }
+
             // Restrict access & trigger login popup if user is logged out
             window.handleRestrictedAction = function(e) {
                 if (!isUserLoggedIn) {
                     e.preventDefault();
                     e.stopPropagation();
                     openAuthModal('login');
+                } else {
+                    alert('Items added to cart!');
                 }
             }
 
@@ -1513,7 +1983,7 @@
                 return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
             }
 
-            // 4. Auto-tabbing progression for OTP inputs
+            // 8. Auto-tabbing progression for OTP inputs
             function setupOtpTabbing(inputClassName) {
                 const otpInputs = document.querySelectorAll('.' + inputClassName);
                 otpInputs.forEach((input, index) => {
@@ -1532,7 +2002,7 @@
             setupOtpTabbing('signup-otp-input');
             setupOtpTabbing('forgot-otp-input');
 
-            // 5. Asynchronous authentication request handlers
+            // 9. Asynchronous authentication request handlers
             window.submitAuthForm = function(e, actionType) {
                 e.preventDefault();
                 clearAlerts();
