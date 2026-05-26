@@ -287,11 +287,103 @@ class Home extends BaseController
 
         $is_logged_in = $session->get('authenticated') === true;
 
-        return view('login_portal', [
+        $data = [
             'is_logged_in' => $is_logged_in,
             'user'          => $session->get('user'),
             'error'         => $error,
             'success'       => $success,
-        ]);
+            'title'         => 'stiqr. - Premium Framed Art & Wall Posters',
+        ];
+
+        return view('templates/header', $data)
+             . view('home', $data)
+             . view('templates/footer', $data);
+    }
+
+    public function about()
+    {
+        $session = session();
+        $is_logged_in = $session->get('authenticated') === true;
+
+        $data = [
+            'is_logged_in' => $is_logged_in,
+            'user'          => $session->get('user'),
+            'title'         => 'About Us - stiqr.',
+        ];
+
+        return view('templates/header', $data)
+             . view('about', $data)
+             . view('templates/footer', $data);
+    }
+
+    public function support()
+    {
+        $session = session();
+        $is_logged_in = $session->get('authenticated') === true;
+        $error = '';
+        $success = '';
+
+        if ($this->request->is('post')) {
+            $name = $this->request->getPost('name');
+            $email = $this->request->getPost('email');
+            $topic = $this->request->getPost('topic');
+            $message = $this->request->getPost('message');
+
+            if (!$name || !$email || !$message) {
+                $error = 'All fields are required.';
+                if ($this->request->isAJAX()) {
+                    return $this->response->setJSON(['status' => 'error', 'message' => $error]);
+                }
+            } else {
+                $success = 'Thank you! Your inquiry has been received. Our team will contact you shortly.';
+                if ($this->request->isAJAX()) {
+                    return $this->response->setJSON(['status' => 'success', 'message' => $success]);
+                }
+            }
+        }
+
+        $data = [
+            'is_logged_in' => $is_logged_in,
+            'user'          => $session->get('user'),
+            'error'         => $error,
+            'success'       => $success,
+            'title'         => 'Help & Support - stiqr.',
+        ];
+
+        return view('templates/header', $data)
+             . view('support', $data)
+             . view('templates/footer', $data);
+    }
+
+    public function careers()
+    {
+        $session = session();
+        $is_logged_in = $session->get('authenticated') === true;
+
+        $data = [
+            'is_logged_in' => $is_logged_in,
+            'user'          => $session->get('user'),
+            'title'         => 'Careers - stiqr.',
+        ];
+
+        return view('templates/header', $data)
+             . view('careers', $data)
+             . view('templates/footer', $data);
+    }
+
+    public function terms()
+    {
+        $session = session();
+        $is_logged_in = $session->get('authenticated') === true;
+
+        $data = [
+            'is_logged_in' => $is_logged_in,
+            'user'          => $session->get('user'),
+            'title'         => 'Terms of Service - stiqr.',
+        ];
+
+        return view('templates/header', $data)
+             . view('terms', $data)
+             . view('templates/footer', $data);
     }
 }
