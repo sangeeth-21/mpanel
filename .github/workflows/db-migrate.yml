@@ -1,16 +1,11 @@
 name: Run Database Migrations
 
 on:
-  workflow_run:
-    workflows: ["Deploy to MilesWeb"]
-    types:
-      - completed
   workflow_dispatch:
 
 jobs:
   migrate:
     runs-on: ubuntu-latest
-    if: ${{ github.event_type == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Setup SSH Key
