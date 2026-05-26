@@ -52,6 +52,10 @@
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.8);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;

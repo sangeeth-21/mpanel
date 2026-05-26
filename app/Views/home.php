@@ -437,8 +437,6 @@
         gap: 28px;
     }
 
-    }
-
     /* Vertical Product Card Showcase */
     .product-showcase-card {
         background-color: var(--bg-card);
@@ -490,7 +488,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 28px;
-        }
         }
     }
 

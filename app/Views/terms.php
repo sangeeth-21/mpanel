@@ -38,6 +38,7 @@
         color: var(--text-primary);
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 8px;
+        scroll-margin-top: 48px;
     }
     .terms-content h3:first-of-type {
         margin-top: 0;
@@ -53,7 +54,7 @@
         margin-bottom: 8px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .terms-layout {
             grid-template-columns: 1fr;
             gap: 32px;
