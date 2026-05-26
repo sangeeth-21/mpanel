@@ -1,9 +1,10 @@
+<?php helper('url'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitec. - Premium Sound Showcase</title>
+    <title>stiqr. - Premium Framed Art & Wall Posters</title>
     <!-- Google Fonts: Outfit for sleek modern UI, JetBrains Mono for codes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,7 @@
             
             --accent-green: #d9f99d; /* Lime green button */
             --accent-green-hover: #bef264;
-            --accent-blue: #2563eb; /* Royal blue for headphones */
+            --accent-blue: #2563eb; /* Royal blue for highlighted actions */
             --accent-red: #ef4444; /* Heart icon red */
             
             --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -59,76 +60,75 @@
 
         body {
             font-family: var(--font-outfit);
-            background-color: var(--bg-body);
+            background-color: var(--bg-primary); /* Use primary color directly on body */
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
+            flex-direction: column;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
             overflow-x: hidden;
         }
 
-        /* Nitec Container Layout */
-        .nitec-container {
+        /* stiqr Container Layout - Fully Fills Page */
+        .stiqr-container {
             width: 100%;
-            max-width: 1280px;
+            min-height: 100vh;
             background-color: var(--bg-primary);
-            border-radius: 32px;
             padding: 32px;
-            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: background-color var(--transition-speed) ease;
         }
 
         /* Header Section */
-        .nitec-header {
+        .stiqr-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
             gap: 16px;
         }
 
-        .nitec-logo {
+        .stiqr-logo {
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             letter-spacing: -0.5px;
             color: var(--text-primary);
         }
 
-        .nitec-logo-icon {
+        .stiqr-logo-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             background-color: var(--text-primary);
             color: var(--bg-card);
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         /* Search Bar */
-        .nitec-search-wrapper {
+        .stiqr-search-wrapper {
             display: flex;
             align-items: center;
             background-color: var(--bg-card);
             border-radius: 30px;
-            padding: 4px 4px 4px 16px;
+            padding: 4px 4px 4px 18px;
             width: 100%;
-            max-width: 380px;
+            max-width: 440px;
             box-shadow: var(--shadow-sm);
             transition: background-color var(--transition-speed) ease;
         }
 
-        .nitec-search-input {
+        .stiqr-search-input {
             flex: 1;
             border: none;
             background: transparent;
@@ -139,13 +139,13 @@
             font-weight: 500;
         }
 
-        .nitec-search-input::placeholder {
+        .stiqr-search-input::placeholder {
             color: var(--text-muted);
         }
 
-        .nitec-search-btn {
-            width: 36px;
-            height: 36px;
+        .stiqr-search-btn {
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background-color: #000;
             color: #fff;
@@ -157,20 +157,20 @@
             transition: transform 0.2s ease;
         }
 
-        .nitec-search-btn:hover {
+        .stiqr-search-btn:hover {
             transform: scale(1.05);
         }
 
         /* Header Actions */
-        .nitec-header-actions {
+        .stiqr-header-actions {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .action-circle-btn {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             background-color: var(--bg-card);
             border: none;
@@ -222,8 +222,8 @@
         }
 
         .user-avatar {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -246,26 +246,29 @@
         }
 
         /* Main Dashboard Grid */
-        .nitec-grid {
+        .stiqr-grid {
             display: grid;
             grid-template-columns: 3.2fr 1.2fr;
-            gap: 24px;
+            gap: 28px;
+            flex: 1;
         }
 
         /* Left Side Columns & Cards */
         .left-column {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            justify-content: space-between;
+            gap: 28px;
         }
 
         /* Hero Card */
         .hero-card {
             background-color: var(--bg-card);
-            border-radius: 28px;
+            border-radius: 32px;
             padding: 48px;
             display: flex;
             position: relative;
+            flex: 1;
             min-height: 480px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -295,7 +298,7 @@
         }
 
         .hero-title {
-            font-size: 3.4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -1.5px;
@@ -303,7 +306,7 @@
             color: var(--text-primary);
         }
 
-        /* Sound indicator guide */
+        /* Art guide row */
         .hero-guide-row {
             display: flex;
             align-items: center;
@@ -416,7 +419,7 @@
             color: var(--bg-card);
         }
 
-        /* Floating Headphone Showcase */
+        /* Floating Framed Poster Showcase */
         .hero-showcase {
             flex: 1;
             display: flex;
@@ -433,19 +436,20 @@
         }
 
         .floating-headphones {
-            width: 310px;
-            height: 310px;
+            width: 280px;
+            height: 340px;
             object-fit: contain;
             animation: float-animation 6s ease-in-out infinite;
-            filter: drop-shadow(0 20px 30px rgba(37, 99, 235, 0.18));
+            filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.15));
+            border-radius: 12px;
             z-index: 2;
         }
 
-        /* Graphic Circles / Guides surrounding Headphone */
+        /* Graphic Circles / Guides surrounding Framed Poster */
         .hero-orbit-guide {
             position: absolute;
-            width: 340px;
-            height: 340px;
+            width: 380px;
+            height: 380px;
             border: 1px dashed var(--text-muted);
             border-radius: 50%;
             opacity: 0.25;
@@ -491,12 +495,12 @@
         .left-bottom-row {
             display: grid;
             grid-template-columns: 1.1fr 1fr 1.3fr;
-            gap: 24px;
+            gap: 28px;
         }
 
         .nitec-card {
             background-color: var(--bg-card);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 24px;
             box-shadow: var(--shadow-sm);
             position: relative;
@@ -538,7 +542,7 @@
 
         .product-thumbnail {
             width: 100%;
-            height: 52px;
+            height: 58px;
             border-radius: 12px;
             object-fit: cover;
             background-color: var(--bg-body);
@@ -619,7 +623,7 @@
             stroke: #f59e0b;
         }
 
-        /* Card 3: Listening Release card */
+        /* Card 3: Release announcement banner */
         .release-card-bg-wrap {
             position: absolute;
             right: 0;
@@ -669,13 +673,14 @@
         .right-column {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            justify-content: space-between;
+            gap: 28px;
         }
 
         /* Popular Colors Card */
         .colors-card {
             background-color: var(--bg-card);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 24px;
             box-shadow: var(--shadow-sm);
             transition: background-color var(--transition-speed) ease;
@@ -724,7 +729,7 @@
         /* Vertical Product Card Showcase */
         .product-showcase-card {
             background-color: var(--bg-card);
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 24px;
             box-shadow: var(--shadow-sm);
             display: flex;
@@ -732,6 +737,7 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+            flex: 1;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background-color var(--transition-speed) ease;
         }
 
@@ -742,7 +748,7 @@
 
         .product-card-img-wrap {
             width: 100%;
-            height: 140px;
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -754,6 +760,7 @@
             max-height: 100%;
             object-fit: contain;
             border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             transition: transform 0.3s ease;
         }
 
@@ -887,17 +894,6 @@
             font-weight: 500;
         }
 
-        .auth-link {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .auth-link:hover {
-            text-decoration: underline;
-        }
-
         .auth-submit-btn {
             width: 100%;
             padding: 14px;
@@ -932,10 +928,6 @@
             border-right-color: transparent;
             border-radius: 50%;
             animation: spin 0.75s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
 
         /* OTP Input Verification Grid */
@@ -989,13 +981,13 @@
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .nitec-grid {
+            .stiqr-grid {
                 grid-template-columns: 1fr;
             }
             .right-column {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 24px;
+                gap: 28px;
             }
             .colors-card {
                 grid-column: span 2;
@@ -1003,12 +995,11 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
+            .stiqr-container {
+                padding: 16px;
             }
-            .nitec-container {
-                padding: 20px;
-                border-radius: 24px;
+            .stiqr-header {
+                margin-bottom: 24px;
             }
             .hero-card {
                 flex-direction: column;
@@ -1017,7 +1008,7 @@
                 gap: 32px;
             }
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.6rem;
             }
             .left-bottom-row {
                 grid-template-columns: 1fr;
@@ -1029,30 +1020,30 @@
                 grid-column: span 1;
             }
             .floating-headphones {
-                width: 240px;
-                height: 240px;
+                width: 220px;
+                height: 270px;
             }
             .hero-orbit-guide {
-                width: 260px;
-                height: 260px;
+                width: 290px;
+                height: 290px;
             }
         }
     </style>
 </head>
 <body class="<?= $is_logged_in ? 'authenticated' : '' ?>">
 
-    <div class="nitec-container">
+    <div class="stiqr-container">
         <!-- Header -->
-        <header class="nitec-header">
-            <div class="nitec-logo">
-                <span class="nitec-logo-icon">n</span>
-                nitec.
+        <header class="stiqr-header">
+            <div class="stiqr-logo">
+                <span class="stiqr-logo-icon">s</span>
+                stiqr.
             </div>
 
             <!-- Search wrapper -->
-            <div class="nitec-search-wrapper" onclick="handleRestrictedAction(event)">
-                <input type="text" class="nitec-search-input" placeholder="Search products..." disabled>
-                <button class="nitec-search-btn">
+            <div class="stiqr-search-wrapper" onclick="handleRestrictedAction(event)">
+                <input type="text" class="stiqr-search-input" placeholder="Search posters..." disabled>
+                <button class="stiqr-search-btn">
                     <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -1061,7 +1052,7 @@
             </div>
 
             <!-- Action controls -->
-            <div class="nitec-header-actions">
+            <div class="stiqr-header-actions">
                 <!-- Theme Toggle Button -->
                 <button class="action-circle-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
                     <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
@@ -1113,7 +1104,7 @@
         </header>
 
         <!-- Grid Dashboard -->
-        <main class="nitec-grid">
+        <main class="stiqr-grid">
             
             <!-- Left Side Area -->
             <div class="left-column">
@@ -1122,30 +1113,30 @@
                 <section class="hero-card">
                     <div class="hero-details">
                         <span class="hero-tag">
-                            <!-- Small custom keyboard grid icon -->
+                            <!-- Custom grid icon -->
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="opacity: 0.7;">
                                 <circle cx="4" cy="4" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="20" cy="4" r="2"></circle>
                                 <circle cx="4" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="20" cy="12" r="2"></circle>
                                 <circle cx="4" cy="20" r="2"></circle><circle cx="12" cy="20" r="2"></circle><circle cx="20" cy="20" r="2"></circle>
                             </svg>
-                            Music is Classic
+                            Art is Eternal
                         </span>
 
                         <h1 class="hero-title">
-                            Sequoia Inspiring<br>Musico.
+                            Inspiring Canvas<br>Artistry.
                         </h1>
 
                         <div class="hero-guide-row">
                             <span class="guide-num">01</span>
                             <span class="guide-line"></span>
                             <div class="guide-desc">
-                                <strong>Clear Sounds</strong>
-                                Making your dream music come true stay with Sequoios Sounds!
+                                <strong>Curated Prints</strong>
+                                Transforming your dream spaces with high-end premium wallposters and curated art prints.
                             </div>
                         </div>
 
                         <button class="hero-cta-btn" onclick="handleRestrictedAction(event)">
-                            View All Products
+                            View All Posters
                             <span class="cta-arrow-circle">
                                 <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -1163,16 +1154,19 @@
                         </div>
                     </div>
 
-                    <!-- Floating Royal Blue Headphone image -->
+                    <!-- Floating Framed Poster image with absolute onerror fallback -->
                     <div class="hero-showcase">
                         <div class="hero-orbit-guide"></div>
                         <div class="orbit-dot dot-1"></div>
                         <div class="orbit-dot dot-2"></div>
                         <div class="orbit-dot dot-3"></div>
-                        <img class="floating-headphones" src="assets/blue_headphones.png" alt="Royal Blue Headphones">
+                        <img class="floating-headphones" 
+                             src="<?= base_url('assets/poster_hero.png') ?>" 
+                             onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_hero.png') ?>';" 
+                             alt="Premium Framed Wall Poster">
                         
                         <!-- Mini slider navigation badge -->
-                        <div class="slider-controls" onclick="alert('Cycling products catalog...')">
+                        <div class="slider-controls" onclick="alert('Cycling posters catalog...')">
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 18 2 12 8 6"></polyline>
@@ -1193,13 +1187,13 @@
                             <span style="color: var(--accent-red); font-size: 1.1rem;">❤️</span>
                         </div>
                         <div class="more-products-thumbnails">
-                            <img class="product-thumbnail" src="assets/black_neon_cube.png" alt="Cube">
-                            <img class="product-thumbnail" src="assets/new_gen_xbud.png" alt="Buds">
-                            <img class="product-thumbnail" src="assets/vr_headset.png" alt="Visor">
+                            <img class="product-thumbnail" src="<?= base_url('assets/poster_cyberpunk.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_cyberpunk.png') ?>';" alt="Poster">
+                            <img class="product-thumbnail" src="<?= base_url('assets/poster_bauhaus.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_bauhaus.png') ?>';" alt="Poster">
+                            <img class="product-thumbnail" src="<?= base_url('assets/poster_line_art.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_line_art.png') ?>';" alt="Poster">
                         </div>
                     </div>
 
-                    <!-- Card 2: Downloads metric -->
+                    <!-- Card 2: Prints Sold metric -->
                     <div class="nitec-card" onclick="handleRestrictedAction(event)">
                         <div class="downloads-circle-container">
                             <div class="avatar-overlap-group">
@@ -1209,29 +1203,29 @@
                             </div>
                             <div class="download-pill-metric">
                                 5m+
-                                <span>Downloads</span>
+                                <span style="font-size: 0.58rem;">Prints Sold</span>
                             </div>
                             <div class="rating-stars-badge">
                                 <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none">
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                 </svg>
-                                4.6 reviews
+                                4.8 reviews
                             </div>
                         </div>
                     </div>
 
                     <!-- Card 3: Release announcement banner -->
                     <div class="nitec-card" onclick="handleRestrictedAction(event)">
-                        <div class="release-card-bg-wrap" style="background-image: url('assets/vr_headset.png');"></div>
+                        <div class="release-card-bg-wrap" style="background-image: url('<?= base_url('assets/poster_bauhaus.png') ?>');" onerror="this.style.backgroundImage='url(<?= base_url('public/assets/poster_bauhaus.png') ?>)'"></div>
                         <div class="release-details">
                             <span class="hero-tag" style="padding: 4px 10px; font-size: 0.75rem; background-color: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid rgba(239, 68, 68, 0.15);">❤️ Popular</span>
                             <div>
-                                <h3 class="card-title" style="font-size: 1.05rem;">Listening Has Been Released</h3>
+                                <h3 class="card-title" style="font-size: 1.05rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">Vintage Bauhaus Released</h3>
                             </div>
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
                                 <div class="rating-stars-badge">
                                     <svg viewBox="0 0 24 24" width="11" height="11" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    4.7
+                                    4.9
                                 </div>
                                 <button class="small-arrow-btn">
                                     <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -1251,20 +1245,20 @@
                 
                 <!-- Popular Colors -->
                 <div class="colors-card">
-                    <h3 class="colors-title">Popular Colors</h3>
+                    <h3 class="colors-title">Popular Frame Colors</h3>
                     <div class="colors-dot-row">
-                        <button class="color-dot-btn active" style="background-color: #3b82f6;" onclick="selectColor(this)"></button>
-                        <button class="color-dot-btn" style="background-color: #f97316;" onclick="selectColor(this)"></button>
-                        <button class="color-dot-btn" style="background-color: #10b981;" onclick="selectColor(this)"></button>
-                        <button class="color-dot-btn" style="background-color: #ef4444;" onclick="selectColor(this)"></button>
-                        <button class="color-dot-btn" style="background-color: #06b6d4;" onclick="selectColor(this)"></button>
+                        <button class="color-dot-btn active" style="background-color: #1e293b;" onclick="selectColor(this)"></button>
+                        <button class="color-dot-btn" style="background-color: #b45309;" onclick="selectColor(this)"></button>
+                        <button class="color-dot-btn" style="background-color: #15803d;" onclick="selectColor(this)"></button>
+                        <button class="color-dot-btn" style="background-color: #b91c1c;" onclick="selectColor(this)"></button>
+                        <button class="color-dot-btn" style="background-color: #f59e0b;" onclick="selectColor(this)"></button>
                     </div>
                 </div>
 
-                <!-- Product Card 1: Buds -->
+                <!-- Product Card 1: Cyberpunk -->
                 <div class="product-showcase-card" onclick="handleRestrictedAction(event)">
                     <div class="card-header-row" style="margin-bottom: 0;">
-                        <h3 class="card-title">New Gen<br>X-Bud</h3>
+                        <h3 class="card-title">Vibrant Neon<br>Cyberpunk</h3>
                         <button class="small-arrow-btn">
                             <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -1273,17 +1267,17 @@
                         </button>
                     </div>
                     <div class="product-card-img-wrap">
-                        <img class="product-card-img" src="assets/new_gen_xbud.png" alt="X-Bud">
+                        <img class="product-card-img" src="<?= base_url('assets/poster_cyberpunk.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_cyberpunk.png') ?>';" alt="Cyberpunk Poster">
                     </div>
                 </div>
 
-                <!-- Product Card 2: VR headset -->
+                <!-- Product Card 2: Minimalist Line -->
                 <div class="product-showcase-card" onclick="handleRestrictedAction(event)">
                     <div class="product-card-img-wrap" style="order: 2;">
-                        <img class="product-card-img" src="assets/vr_headset.png" alt="VR Headset">
+                        <img class="product-card-img" src="<?= base_url('assets/poster_line_art.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_line_art.png') ?>';" alt="Botanical Line Poster">
                     </div>
                     <div class="card-header-row" style="margin-bottom: 0; order: 1; justify-content: space-between;">
-                        <h3 class="card-title" style="font-size: 1.05rem;">Light Grey Surface<br>Headphone<br><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Boosted with bass</span></h3>
+                        <h3 class="card-title" style="font-size: 1.05rem;">Minimalist Line<br>Botanical Art<br><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Beige series print</span></h3>
                         <button class="small-arrow-btn" style="align-self: flex-start;">
                             <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -1312,7 +1306,7 @@
             <div class="auth-screen" id="screenLogin">
                 <div class="auth-modal-header">
                     <h2 class="auth-modal-title">Sign In</h2>
-                    <p class="auth-modal-sub">Welcome back! Please enter your credentials.</p>
+                    <p class="auth-modal-sub">Welcome back to stiqr. Please enter your credentials.</p>
                 </div>
                 <form id="loginForm" method="POST" onsubmit="submitAuthForm(event, 'login')">
                     <div class="auth-form-group">
@@ -1334,7 +1328,7 @@
             <div class="auth-screen" id="screenSignup">
                 <div class="auth-modal-header">
                     <h2 class="auth-modal-title">Create Account</h2>
-                    <p class="auth-modal-sub">Sign up for exclusive access to premium sounds.</p>
+                    <p class="auth-modal-sub">Sign up for exclusive access to premium wall posters.</p>
                 </div>
                 <form id="signupForm" method="POST" onsubmit="submitAuthForm(event, 'signup_request')">
                     <div class="auth-form-group">
@@ -1430,7 +1424,7 @@
             const moonIcon = themeToggleBtn.querySelector('.moon-icon');
 
             // Apply saved theme or default to light
-            const savedTheme = localStorage.getItem('nitec-theme') || 'light';
+            const savedTheme = localStorage.getItem('stiqr-theme') || 'light';
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 sunIcon.style.display = 'block';
@@ -1440,11 +1434,11 @@
             themeToggleBtn.addEventListener('click', () => {
                 const isDarkMode = document.body.classList.toggle('dark-mode');
                 if (isDarkMode) {
-                    localStorage.setItem('nitec-theme', 'dark');
+                    localStorage.setItem('stiqr-theme', 'dark');
                     sunIcon.style.display = 'block';
                     moonIcon.style.display = 'none';
                 } else {
-                    localStorage.setItem('nitec-theme', 'light');
+                    localStorage.setItem('stiqr-theme', 'light');
                     sunIcon.style.display = 'none';
                     moonIcon.style.display = 'block';
                 }

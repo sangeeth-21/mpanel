@@ -72,12 +72,12 @@ class Home extends BaseController
                     // Send OTP using Email Service
                     $emailService = \Config\Services::email();
                     $emailService->setTo($email);
-                    $emailService->setSubject('Finnger Security - Email Verification Code');
+                    $emailService->setSubject('Stiqr Security - Email Verification Code');
                     
                     $message = "
                     <div style='font-family: sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px; background-color: #ffffff;'>
                         <h2 style='color: #2563eb; margin-bottom: 16px; font-weight: 700;'>Verify Your Email</h2>
-                        <p style='color: #4b5563; font-size: 15px; line-height: 1.5;'>Please verify your email address to complete your registration on Finnger Security.</p>
+                        <p style='color: #4b5563; font-size: 15px; line-height: 1.5;'>Please verify your email address to complete your registration on Stiqr Security.</p>
                         <div style='background-color: #f3f4f6; padding: 16px; border-radius: 8px; text-align: center; margin: 24px 0;'>
                             <span style='font-size: 28px; font-weight: bold; letter-spacing: 4px; color: #2563eb; font-family: monospace;'>{$otp}</span>
                         </div>
@@ -180,12 +180,12 @@ class Home extends BaseController
                     // Send OTP using Email Service
                     $emailService = \Config\Services::email();
                     $emailService->setTo($email);
-                    $emailService->setSubject('Finnger Security - Password Reset Code');
+                    $emailService->setSubject('Stiqr Security - Password Reset Code');
                     
                     $message = "
                     <div style='font-family: sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px; background-color: #ffffff;'>
                         <h2 style='color: #2563eb; margin-bottom: 16px; font-weight: 700;'>Reset Your Password</h2>
-                        <p style='color: #4b5563; font-size: 15px; line-height: 1.5;'>Use the verification code below to reset the password for your Finnger Security account.</p>
+                        <p style='color: #4b5563; font-size: 15px; line-height: 1.5;'>Use the verification code below to reset the password for your Stiqr Security account.</p>
                         <div style='background-color: #f3f4f6; padding: 16px; border-radius: 8px; text-align: center; margin: 24px 0;'>
                             <span style='font-size: 28px; font-weight: bold; letter-spacing: 4px; color: #2563eb; font-family: monospace;'>{$otp}</span>
                         </div>

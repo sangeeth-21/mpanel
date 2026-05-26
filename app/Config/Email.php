@@ -6,16 +6,16 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = 'no-reply@finnger.com';
-    public string $fromName   = 'Finnger';
+    public string $fromEmail  = 'no-reply@stiqr.com';
+    public string $fromName   = 'Stiqr';
     public string $recipients = '';
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->fromEmail  = env('email.fromEmail') ?: 'no-reply@finnger.com';
-        $this->fromName   = env('email.fromName') ?: 'Finnger';
+        $this->fromEmail  = env('email.fromEmail') ?: 'no-reply@stiqr.com';
+        $this->fromName   = env('email.fromName') ?: 'Stiqr';
         $this->protocol   = env('email.protocol') ?: 'smtp';
         $this->SMTPHost   = env('email.SMTPHost') ?: '';
         $this->SMTPUser   = env('email.SMTPUser') ?: '';
