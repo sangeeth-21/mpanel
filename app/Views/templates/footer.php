@@ -98,10 +98,26 @@
                 </div>
                 <form id="loginForm" method="POST" onsubmit="submitAuthForm(event, 'login')">
                     <div class="auth-form-group">
-                        <input type="email" id="loginEmail" class="auth-form-input" placeholder="Email Address" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </span>
+                            <input type="email" id="loginEmail" class="auth-form-input" placeholder="Email Address" required>
+                        </div>
                     </div>
                     <div class="auth-form-group">
-                        <input type="password" id="loginPassword" class="auth-form-input" placeholder="Password" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                            <input type="password" id="loginPassword" class="auth-form-input" placeholder="Password" required>
+                        </div>
                     </div>
                     <button type="submit" class="auth-submit-btn" id="loginSubmitBtn">Sign In</button>
                 </form>
@@ -120,13 +136,37 @@
                 </div>
                 <form id="signupForm" method="POST" onsubmit="submitAuthForm(event, 'signup_request')">
                     <div class="auth-form-group">
-                        <input type="email" id="signupEmail" class="auth-form-input" placeholder="Email Address" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </span>
+                            <input type="email" id="signupEmail" class="auth-form-input" placeholder="Email Address" required>
+                        </div>
                     </div>
                     <div class="auth-form-group">
-                        <input type="password" id="signupPassword" class="auth-form-input" placeholder="Create Password (min 6 chars)" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                            <input type="password" id="signupPassword" class="auth-form-input" placeholder="Create Password (min 6 chars)" required>
+                        </div>
                     </div>
                     <div class="auth-form-group">
-                        <input type="password" id="signupConfirmPassword" class="auth-form-input" placeholder="Confirm Password" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </span>
+                            <input type="password" id="signupConfirmPassword" class="auth-form-input" placeholder="Confirm Password" required>
+                        </div>
                     </div>
                     <button type="submit" class="auth-submit-btn" id="signupSubmitBtn">Send Verification Code</button>
                 </form>
@@ -165,7 +205,15 @@
                 </div>
                 <form id="forgotForm" method="POST" onsubmit="submitAuthForm(event, 'forgot_request')">
                     <div class="auth-form-group">
-                        <input type="email" id="forgotEmail" class="auth-form-input" placeholder="Email Address" required>
+                        <div class="auth-input-wrapper">
+                            <span class="auth-input-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </span>
+                            <input type="email" id="forgotEmail" class="auth-form-input" placeholder="Email Address" required>
+                        </div>
                     </div>
                     <button type="submit" class="auth-submit-btn" id="forgotSubmitBtn">Send Reset Code</button>
                 </form>
@@ -197,7 +245,15 @@
                     <!-- Step 2: Password Input & Update Button -->
                     <div id="forgotPasswordStep" style="display: none; margin-top: 20px;">
                         <div class="auth-form-group">
-                            <input type="password" id="forgotNewPassword" class="auth-form-input" placeholder="Enter New Password (min 6 chars)" required>
+                            <div class="auth-input-wrapper">
+                                <span class="auth-input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </span>
+                                <input type="password" id="forgotNewPassword" class="auth-form-input" placeholder="Enter New Password (min 6 chars)" required>
+                            </div>
                         </div>
                         <button type="submit" class="auth-submit-btn" id="forgotVerifySubmitBtn">Update Password</button>
                     </div>
@@ -340,6 +396,12 @@
 
             window.switchAuthScreen = function(screenName) {
                 clearAlerts();
+                
+                // Clear all input values in the modal card to reset states
+                document.querySelectorAll('.auth-modal-card input').forEach(input => {
+                    input.value = '';
+                });
+
                 const screens = document.querySelectorAll('.auth-screen');
                 screens.forEach(screen => screen.classList.remove('active'));
                 
@@ -352,7 +414,6 @@
                         otpStep.style.display = 'block';
                         pwStep.style.display = 'none';
                         subText.textContent = 'Enter the 6-digit verification code sent to your email.';
-                        document.querySelectorAll('.forgot-otp-input').forEach(box => box.value = '');
                     }
                 }
                 
@@ -645,6 +706,16 @@
                     input.addEventListener('keydown', (e) => {
                         if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
                             otpInputs[index - 1].focus();
+                        }
+                    });
+                    input.addEventListener('paste', (e) => {
+                        e.preventDefault();
+                        const pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
+                        if (pasteData.length === 6 && /^[a-zA-Z0-9]{6}$/.test(pasteData)) {
+                            otpInputs.forEach((otpInput, i) => {
+                                otpInput.value = pasteData[i];
+                            });
+                            otpInputs[5].focus();
                         }
                     });
                 });
