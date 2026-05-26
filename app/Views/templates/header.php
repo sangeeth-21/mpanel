@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title ?? 'stiqr. - Premium Framed Art & Wall Posters') ?></title>
+    <link rel="icon" type="image/svg+xml" href="<?= base_url('favicon.svg') ?>">
     <!-- Google Fonts: Outfit for sleek modern UI, JetBrains Mono for codes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,14 +113,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: var(--text-primary);
-            color: var(--bg-card);
-            border-radius: 10px;
-            font-weight: 900;
-            font-size: 1.3rem;
-            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            width: 32px;
+            height: 32px;
+            color: var(--text-primary);
+            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        .stiqr-logo:hover .stiqr-logo-icon {
+            transform: scale(1.08) rotate(-4deg);
         }
 
         /* Search Trigger button in Header */
@@ -968,7 +969,25 @@
         <!-- Header -->
         <header class="stiqr-header">
             <a href="<?= site_url('/') ?>" class="stiqr-logo">
-                <span class="stiqr-logo-icon">s</span>
+                <span class="stiqr-logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background Frame (Poster Border) -->
+                        <rect x="4" y="4" width="24" height="24" rx="4.5" stroke="currentColor" stroke-width="2" fill="none" />
+                        
+                        <!-- Art Print Sun -->
+                        <circle cx="10" cy="10" r="1.8" fill="currentColor" opacity="0.6" />
+                        
+                        <!-- Art Print Mountains -->
+                        <path d="M5 24l5.5-6.5L15 22l4-4.5L27 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        
+                        <!-- Central Sticker with peeled bottom-right corner -->
+                        <path d="M16 23.5 A7.5 7.5 0 1 0 23.5 16 L16 23.5 Z" fill="var(--accent-green-hover)" />
+                        <!-- White peel fold of the sticker -->
+                        <path d="M23.5 16 L16 23.5 L18 18 Z" fill="#ffffff" />
+                        <!-- Monogram S inside the sticker -->
+                        <path d="M19 13 C19 12 17.5 11.5 16 11.5 C14 11.5 13 12.3 13 13.5 C13 15.2 15.2 15.5 16.5 15.8 C18.2 16.2 19 16.8 19 18.5 C19 19.8 17.5 20.5 16 20.5 C14 20.5 13 19.8 13 18.5" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    </svg>
+                </span>
                 stiqr.
             </a>
 

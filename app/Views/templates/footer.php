@@ -2,7 +2,25 @@
         <footer class="stiqr-footer">
             <div class="stiqr-footer-col">
                 <div class="stiqr-logo" style="margin-bottom: 12px;">
-                    <span class="stiqr-logo-icon" style="width: 28px; height: 28px; font-size: 1rem; border-radius: 8px;">s</span>
+                    <span class="stiqr-logo-icon" style="width: 26px; height: 26px;">
+                        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Frame (Poster Border) -->
+                            <rect x="4" y="4" width="24" height="24" rx="4.5" stroke="currentColor" stroke-width="2" fill="none" />
+                            
+                            <!-- Art Print Sun -->
+                            <circle cx="10" cy="10" r="1.8" fill="currentColor" opacity="0.6" />
+                            
+                            <!-- Art Print Mountains -->
+                            <path d="M5 24l5.5-6.5L15 22l4-4.5L27 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                            
+                            <!-- Central Sticker with peeled bottom-right corner -->
+                            <path d="M16 23.5 A7.5 7.5 0 1 0 23.5 16 L16 23.5 Z" fill="var(--accent-green-hover)" />
+                            <!-- White peel fold of the sticker -->
+                            <path d="M23.5 16 L16 23.5 L18 18 Z" fill="#ffffff" />
+                            <!-- Monogram S inside the sticker -->
+                            <path d="M19 13 C19 12 17.5 11.5 16 11.5 C14 11.5 13 12.3 13 13.5 C13 15.2 15.2 15.5 16.5 15.8 C18.2 16.2 19 16.8 19 18.5 C19 19.8 17.5 20.5 16 20.5 C14 20.5 13 19.8 13 18.5" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        </svg>
+                    </span>
                     stiqr.
                 </div>
                 <p style="font-size: 0.85rem; max-width: 240px; line-height: 1.5;">Curating premium quality wall posters and framed arts for aesthetic spaces.</p>
