@@ -970,22 +970,62 @@
         <header class="stiqr-header">
             <a href="<?= site_url('/') ?>" class="stiqr-logo">
                 <span class="stiqr-logo-icon">
-                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background Frame (Poster Border) -->
-                        <rect x="4" y="4" width="24" height="24" rx="4.5" stroke="currentColor" stroke-width="2" fill="none" />
-                        
-                        <!-- Art Print Sun -->
-                        <circle cx="10" cy="10" r="1.8" fill="currentColor" opacity="0.6" />
-                        
-                        <!-- Art Print Mountains -->
-                        <path d="M5 24l5.5-6.5L15 22l4-4.5L27 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                        
-                        <!-- Central Sticker with peeled bottom-right corner -->
-                        <path d="M16 23.5 A7.5 7.5 0 1 0 23.5 16 L16 23.5 Z" fill="var(--accent-green-hover)" />
-                        <!-- White peel fold of the sticker -->
-                        <path d="M23.5 16 L16 23.5 L18 18 Z" fill="#ffffff" />
-                        <!-- Monogram S inside the sticker -->
-                        <path d="M19 13 C19 12 17.5 11.5 16 11.5 C14 11.5 13 12.3 13 13.5 C13 15.2 15.2 15.5 16.5 15.8 C18.2 16.2 19 16.8 19 18.5 C19 19.8 17.5 20.5 16 20.5 C14 20.5 13 19.8 13 18.5" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <svg width="100%" height="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+                      <title>Stiqr icon mark</title>
+                      <desc>Stiqr modern logo with vibrant teal-green rounded square and stylized S with poster texture inside</desc>
+
+                      <defs>
+                        <clipPath id="shape-header">
+                          <rect x="155" y="85" width="370" height="370" rx="90"/>
+                        </clipPath>
+                        <clipPath id="sclip-header">
+                          <text x="340" y="365" font-family="'Trebuchet MS','Segoe UI',Arial,sans-serif" font-weight="900" font-size="310" text-anchor="middle">S</text>
+                        </clipPath>
+                        <mask id="imagine-text-gaps-4gkej5-header" maskUnits="userSpaceOnUse">
+                          <rect x="0" y="0" width="680" height="680" fill="white"/>
+                          <rect x="256.7578125" y="72" width="166.484375" height="364" fill="black" rx="2"/>
+                          <rect x="256.7578125" y="72" width="166.484375" height="364" fill="black" rx="2"/>
+                        </mask>
+                      </defs>
+
+                      <!-- Background shape -->
+                      <rect x="155" y="85" width="370" height="370" rx="90" fill="#00c896" style="fill:rgb(0, 200, 150);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- Deep color bottom half overlay -->
+                      <rect x="155" y="260" width="370" height="195" rx="0" fill="#00a87e" clip-path="url(#shape-header)" style="fill:rgb(0, 168, 126);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- Geometric background pattern -->
+                      <polygon points="155,85 340,85 155,300" fill="#00dea8" opacity="0.18" clip-path="url(#shape-header)" style="fill:rgb(0, 222, 168);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.18;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <polygon points="525,85 525,310 310,85" fill="#009e76" opacity="0.22" clip-path="url(#shape-header)" style="fill:rgb(0, 158, 118);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.22;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <polygon points="155,455 400,455 155,250" fill="#007a5c" opacity="0.15" clip-path="url(#shape-header)" style="fill:rgb(0, 122, 92);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.15;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- Grid inside S -->
+                      <line x1="155" y1="170" x2="525" y2="170" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="155" y1="210" x2="525" y2="210" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="155" y1="250" x2="525" y2="250" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="155" y1="290" x2="525" y2="290" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="155" y1="330" x2="525" y2="330" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="155" y1="370" x2="525" y2="370" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="240" y1="85" x2="240" y2="455" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="290" y1="85" x2="290" y2="455" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="340" y1="85" x2="340" y2="455" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="390" y1="85" x2="390" y2="455" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" mask="url(#imagine-text-gaps-4gkej5-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <line x1="440" y1="85" x2="440" y2="455" stroke="#ffffff" stroke-width="1" opacity="0.06" clip-path="url(#sclip-header)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- Card layers inside S -->
+                      <rect x="185" y="160" width="310" height="80" rx="12" fill="#ffffff" opacity="0.09" clip-path="url(#sclip-header)" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.09;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <rect x="185" y="290" width="310" height="80" rx="12" fill="#ffffff" opacity="0.09" clip-path="url(#sclip-header)" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.09;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <rect x="185" y="370" width="310" height="60" rx="12" fill="#ffffff" opacity="0.06" clip-path="url(#sclip-header)" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- Accent stripes inside S -->
+                      <rect x="155" y="230" width="370" height="24" fill="#ffdd57" opacity="0.18" clip-path="url(#sclip-header)" style="fill:rgb(255, 221, 87);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.18;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+                      <rect x="155" y="320" width="370" height="16" fill="#ff6b6b" opacity="0.14" clip-path="url(#sclip-header)" style="fill:rgb(255, 107, 107);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.14;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+                      <!-- S outline -->
+                      <text x="340" y="365" font-family="'Trebuchet MS','Segoe UI',Arial,sans-serif" font-weight="900" font-size="310" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.95" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(255, 255, 255);stroke-width:6px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.95;font-family:&quot;Trebuchet MS&quot;, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:310px;font-weight:900;text-anchor:middle;dominant-baseline:auto">S</text>
+
+                      <!-- S fill -->
+                      <text x="340" y="365" font-family="'Trebuchet MS','Segoe UI',Arial,sans-serif" font-weight="900" font-size="310" text-anchor="middle" fill="#ffffff" opacity="0.97" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.97;font-family:&quot;Trebuchet MS&quot;, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:310px;font-weight:900;text-anchor:middle;dominant-baseline:auto">S</text>
                     </svg>
                 </span>
                 stiqr.
