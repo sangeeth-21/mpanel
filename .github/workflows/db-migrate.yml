@@ -77,4 +77,4 @@ jobs:
       - name: Execute Migration Remote Command
         run: |
           echo "Connecting to server to run migrations..."
-          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -o ConnectionAttempts=5 ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && echo '=== MIGRATION STATUS BEFORE ===' && php spark migrate:status && echo '=== RUNNING MIGRATIONS ===' && php spark migrate -f && echo '=== MIGRATION STATUS AFTER ===' && php spark migrate:status"
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=30 -o ConnectionAttempts=5 -o IPQoS=none ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ~/${{ secrets.TARGET_DIR }} && echo '=== MIGRATION STATUS BEFORE ===' && php spark migrate:status && echo '=== RUNNING MIGRATIONS ===' && php spark migrate -f && echo '=== MIGRATION STATUS AFTER ===' && php spark migrate:status"

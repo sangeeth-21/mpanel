@@ -108,6 +108,15 @@ jobs:
           echo "" >> ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
+      - name: SSH Connection Diagnostic
+        run: |
+          echo "=== RUNNING SSH CONNECTION DIAGNOSTIC ==="
+          echo "Attempting a verbose SSH handshake to pinpoint network or handshake issues..."
+          ssh -v -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10 -o ConnectionAttempts=1 -o IPQoS=none ${{ secrets.USERNAME }}@${{ secrets.HOST }} "echo 'Diagnostic SSH handshaking succeeded.'" || {
+            echo "[-] DIAGNOSTIC ERROR: Verbose SSH handshake failed."
+            echo "This output details exactly where the connection is dropping (e.g. DNS, TCP handshake, or KEX)."
+          }
+
       - name: Deploy Files
         run: |
           MAX_RETRIES=5
@@ -116,7 +125,7 @@ jobs:
           until [ $RETRY_COUNT -ge $MAX_RETRIES ]; do
             echo "Deployment attempt $((RETRY_COUNT + 1)) of $MAX_RETRIES..."
             if rsync -avz --delete \
-              -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -o ConnectionAttempts=3" \
+              -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=30 -o ConnectionAttempts=3 -o IPQoS=none" \
               ./ \
               ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/${{ secrets.TARGET_DIR }}; then
               SUCCESS=true
