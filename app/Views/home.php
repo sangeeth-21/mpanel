@@ -538,8 +538,8 @@
                 </h1>
 
                 <div class="hero-price-tag" style="margin: 16px 0; display: flex; align-items: baseline; gap: 12px;">
-                    <span id="heroPrice" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$45.00</span>
-                    <span id="heroMrp" style="font-size: 1.25rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">$75.00</span>
+                    <span id="heroPrice" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">₹45.00</span>
+                    <span id="heroMrp" style="font-size: 1.25rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">₹75.00</span>
                     <span id="heroDiscount" class="hero-tag" style="background-color: rgba(37, 99, 235, 0.08); color: var(--accent-blue); font-size: 0.8rem; padding: 4px 8px; font-weight: 700; border: none;">40% OFF</span>
                 </div>
 
@@ -640,8 +640,8 @@
                     <div>
                         <h3 class="card-title" style="font-size: 1.05rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">Vintage Bauhaus</h3>
                         <div style="display: flex; gap: 6px; align-items: baseline; margin-top: 4px; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">
-                            <span style="font-size: 1rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$48.50</span>
-                            <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">$80.00</span>
+                            <span style="font-size: 1rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">₹48.50</span>
+                            <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">₹80.00</span>
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
@@ -667,12 +667,15 @@
         
         <!-- Product Card 1: Cyberpunk -->
         <div class="product-showcase-card" onclick="openProductModal('cyberpunk')">
-            <div class="card-header-row" style="margin-bottom: 0;">
+            <div class="product-card-img-wrap">
+                <img class="product-card-img" src="<?= base_url('assets/poster_cyberpunk.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_cyberpunk.png') ?>';" alt="Cyberpunk Poster">
+            </div>
+            <div class="card-header-row" style="margin-top: 12px; margin-bottom: 0;">
                 <div>
                     <h3 class="card-title">Vibrant Neon<br>Cyberpunk</h3>
                     <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px;">
-                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$52.00</span>
-                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">$85.00</span>
+                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">₹52.00</span>
+                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">₹85.00</span>
                     </div>
                 </div>
                 <button class="small-arrow-btn">
@@ -682,22 +685,19 @@
                     </svg>
                 </button>
             </div>
-            <div class="product-card-img-wrap">
-                <img class="product-card-img" src="<?= base_url('assets/poster_cyberpunk.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_cyberpunk.png') ?>';" alt="Cyberpunk Poster">
-            </div>
         </div>
 
         <!-- Product Card 2: Minimalist Line -->
         <div class="product-showcase-card" onclick="openProductModal('line_art')">
-            <div class="product-card-img-wrap" style="order: 2;">
+            <div class="product-card-img-wrap">
                 <img class="product-card-img" src="<?= base_url('assets/poster_line_art.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_line_art.png') ?>';" alt="Botanical Line Poster">
             </div>
-            <div class="card-header-row" style="margin-bottom: 0; order: 1; justify-content: space-between;">
+            <div class="card-header-row" style="margin-top: 12px; margin-bottom: 0;">
                 <div>
                     <h3 class="card-title" style="font-size: 1.05rem;">Minimalist Line<br>Botanical Art<br><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Beige series print</span></h3>
                     <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px;">
-                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$39.00</span>
-                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">$65.00</span>
+                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">₹39.00</span>
+                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">₹65.00</span>
                     </div>
                 </div>
                 <button class="small-arrow-btn" style="align-self: flex-start;">
@@ -725,8 +725,8 @@
                 desc: 'Transforming your dream spaces with high-end premium wallposters and curated art prints.',
                 image: '<?= base_url("assets/poster_hero.png") ?>',
                 imageFallback: '<?= base_url("public/assets/poster_hero.png") ?>',
-                price: '$45.00',
-                mrp: '$75.00',
+                price: '₹45.00',
+                mrp: '₹75.00',
                 discount: '40% OFF'
             },
             {
@@ -737,8 +737,8 @@
                 desc: 'Dive into high-contrast futuristic urban streets with our glowing cyberpunk framed series.',
                 image: '<?= base_url("assets/poster_cyberpunk.png") ?>',
                 imageFallback: '<?= base_url("public/assets/poster_cyberpunk.png") ?>',
-                price: '$52.00',
-                mrp: '$85.00',
+                price: '₹52.00',
+                mrp: '₹85.00',
                 discount: '38% OFF'
             },
             {
@@ -749,8 +749,8 @@
                 desc: 'Experience primary colors and typographic balance with classic Weimar Bauhaus museum prints.',
                 image: '<?= base_url("assets/poster_bauhaus.png") ?>',
                 imageFallback: '<?= base_url("public/assets/poster_bauhaus.png") ?>',
-                price: '$48.50',
-                mrp: '$80.00',
+                price: '₹48.50',
+                mrp: '₹80.00',
                 discount: '39% OFF'
             }
         ];

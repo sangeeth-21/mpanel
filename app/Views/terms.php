@@ -97,7 +97,7 @@
 
             <h3 id="purchase">3. Purchase and Payments</h3>
             <p>By placing an order on stiqr., you represent that you are at least 18 years old or accessing the site with parental consent, and that all billing and shipping information provided is accurate and complete.</p>
-            <p>All prices displayed are in USD and are subject to change. Payment must be cleared in full before custom pine framing and Giclée printing production begins. In the event of a payment dispute, stiqr. reserves the right to hold shipments or cancel user sessions.</p>
+            <p>All prices displayed are in INR (₹) and are subject to change. Payment must be cleared in full before custom pine framing and Giclée printing production begins. In the event of a payment dispute, stiqr. reserves the right to hold shipments or cancel user sessions.</p>
 
             <h3 id="conduct">4. Prohibited Conduct</h3>
             <p>You agree not to use the website or its security interface for any unlawful purpose. Prohibited activities include, but are not limited to, attempting to inject malicious scripts, brute-forcing accounts, initiating fraudulent chargebacks, or scraping database products.</p>

@@ -116,7 +116,7 @@
             <div class="benefit-card">
                 <span class="benefit-icon">🖼️</span>
                 <h4 class="benefit-title">Annual Art Budget</h4>
-                <p class="benefit-desc">Receive a $1,200 annual credit to fill your workspace and home walls with stiqr. framed prints.</p>
+                <p class="benefit-desc">Receive a ₹1,200 annual credit to fill your workspace and home walls with stiqr. framed prints.</p>
             </div>
             <div class="benefit-card">
                 <span class="benefit-icon">📈</span>
@@ -136,7 +136,7 @@
                     <div class="job-badge-row">
                         <span class="job-badge">Remote</span>
                         <span class="job-badge">Full-time</span>
-                        <span class="job-badge salary">$110k – $140k</span>
+                        <span class="job-badge salary">₹110k – ₹140k</span>
                     </div>
                 </div>
                 <button class="hero-cta-btn" onclick="openApplyModal('Senior Frontend Engineer')">Apply Now</button>
@@ -149,7 +149,7 @@
                     <div class="job-badge-row">
                         <span class="job-badge">Remote / Europe</span>
                         <span class="job-badge">Full-time</span>
-                        <span class="job-badge salary">$80k – $105k</span>
+                        <span class="job-badge salary">₹80k – ₹105k</span>
                     </div>
                 </div>
                 <button class="hero-cta-btn" onclick="openApplyModal('Lead Art Curator')">Apply Now</button>
@@ -162,7 +162,7 @@
                     <div class="job-badge-row">
                         <span class="job-badge">Remote</span>
                         <span class="job-badge">Contract</span>
-                        <span class="job-badge salary">$90k – $115k equivalent</span>
+                        <span class="job-badge salary">₹90k – ₹115k equivalent</span>
                     </div>
                 </div>
                 <button class="hero-cta-btn" onclick="openApplyModal('Visual & Brand Designer')">Apply Now</button>

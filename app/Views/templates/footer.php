@@ -266,7 +266,7 @@
                         <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 20px;">
                             <div>
                                 <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px;">Poster Price</span>
-                                <span id="prodModalPrice" style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: var(--accent-blue);">$45.00</span>
+                                <span id="prodModalPrice" style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: var(--accent-blue);">₹45.00</span>
                             </div>
                             <button class="hero-cta-btn" style="padding: 12px 28px;" onclick="addToCartFromModal()">
                                 Add to Cart
@@ -452,7 +452,7 @@
                                     <span>Order #STQ-88321</span>
                                     <span style="color:#10b981;">Delivered</span>
                                 </div>
-                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-20 | Total: $48.50</div>
+                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-20 | Total: ₹48.50</div>
                                 <p style="font-weight: 500;">- 1x Vintage Bauhaus Geometric (Framed Black)</p>
                             </div>
                             <div style="padding: 12px; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; opacity:0.85;">
@@ -460,7 +460,7 @@
                                     <span>Order #STQ-88204</span>
                                     <span style="color:var(--text-muted);">Cancelled</span>
                                 </div>
-                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-12 | Total: $125.00</div>
+                                <div style="color:var(--text-muted); font-size:0.8rem; margin: 4px 0;">Date: 2026-05-12 | Total: ₹125.00</div>
                                 <p style="font-weight: 500;">- 2x Vibrant Neon Cyberpunk Series</p>
                             </div>
                         </div>
@@ -510,7 +510,7 @@
                     desc: 'Elevate your workspace or living room with this clean, geometric abstract artwork. Hand-pressed on heavyweight museum-grade matte canvas with rich, deep-contrast ink profiles. Features a custom slim black frame.',
                     image: '<?= base_url("assets/poster_hero.png") ?>',
                     imageFallback: '<?= base_url("public/assets/poster_hero.png") ?>',
-                    price: '$45.00',
+                    price: '₹45.00',
                     rating: '4.8'
                 },
                 cyberpunk: {
@@ -519,7 +519,7 @@
                     desc: 'Bring a slice of the futuristic high-contrast retro neon cityscape into your room. Renders vibrant pinks, blues, and purples with high intensity on deep-tint archival paper. Includes standard frames.',
                     image: '<?= base_url("assets/poster_cyberpunk.png") ?>',
                     imageFallback: '<?= base_url("public/assets/poster_cyberpunk.png") ?>',
-                    price: '$52.00',
+                    price: '₹52.00',
                     rating: '4.9'
                 },
                 bauhaus: {
@@ -528,7 +528,7 @@
                     desc: 'A premium framed edition showcasing Weimar Bauhaus museum typographic layouts and primary color balances. Ideal for minimalist aesthetic workspaces, home libraries, or architectural design studios.',
                     image: '<?= base_url("assets/poster_bauhaus.png") ?>',
                     imageFallback: '<?= base_url("public/assets/poster_bauhaus.png") ?>',
-                    price: '$48.50',
+                    price: '₹48.50',
                     rating: '4.9'
                 },
                 line_art: {
@@ -537,7 +537,7 @@
                     desc: 'Soft beige botanical silhouette drawing featuring elegant, continuous line art. Calming, neutral tone addition to enhance bedrooms or quiet reading spaces. Pressed on textured fine-art paper.',
                     image: '<?= base_url("assets/poster_line_art.png") ?>',
                     imageFallback: '<?= base_url("public/assets/poster_line_art.png") ?>',
-                    price: '$39.00',
+                    price: '₹39.00',
                     rating: '4.7'
                 }
             };
