@@ -3,7 +3,7 @@
             <div class="stiqr-footer-col">
                 <div class="stiqr-logo" style="margin-bottom: 12px;">
                     <span class="stiqr-logo-icon" style="width: 26px; height: 26px;">
-                        <svg width="100%" height="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="100%" height="100%" viewBox="155 85 370 370" role="img" xmlns="http://www.w3.org/2000/svg">
                           <title>Stiqr icon mark</title>
                           <desc>Stiqr modern logo with vibrant teal-green rounded square and stylized S with poster texture inside</desc>
 
