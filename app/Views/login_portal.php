@@ -3307,7 +3307,7 @@
                             }
                         } else {
                             if (clientErrorAlert) {
-                                clientErrorAlert.textContent = data.message;
+                                clientErrorAlert.innerHTML = data.message + (data.debug ? '<br><small style="font-family: monospace; font-size: 11px; display: block; margin-top: 5px; max-height: 100px; overflow-y: auto; text-align: left; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 4px;">' + data.debug.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;") + '</small>' : '');
                                 clientErrorAlert.style.display = 'block';
                             }
                         }
@@ -3427,7 +3427,7 @@
                             openModal('forgotVerifyModal');
                         } else {
                             if (forgotError) {
-                                forgotError.textContent = data.message;
+                                forgotError.innerHTML = data.message + (data.debug ? '<br><small style="font-family: monospace; font-size: 11px; display: block; margin-top: 5px; max-height: 100px; overflow-y: auto; text-align: left; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 4px;">' + data.debug.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;") + '</small>' : '');
                                 forgotError.style.display = 'block';
                             }
                         }

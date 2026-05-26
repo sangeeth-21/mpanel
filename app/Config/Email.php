@@ -21,7 +21,10 @@ class Email extends BaseConfig
         $this->SMTPUser   = env('email.SMTPUser') ?: '';
         $this->SMTPPass   = env('email.SMTPPass') ?: '';
         $this->SMTPPort   = (int)(env('email.SMTPPort') ?: 587);
-        $this->SMTPCrypto = env('email.SMTPCrypto') ?: 'tls';
+        
+        $smtpCrypto = env('email.SMTPCrypto');
+        $this->SMTPCrypto = ($smtpCrypto !== null) ? $smtpCrypto : 'tls';
+        
         $this->mailType   = 'html';
     }
 
