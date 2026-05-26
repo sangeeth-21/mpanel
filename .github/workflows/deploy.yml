@@ -110,7 +110,28 @@ jobs:
 
       - name: Deploy Files
         run: |
-          rsync -avz --delete \
-            -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
-            ./ \
-            ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/${{ secrets.TARGET_DIR }}
+          MAX_RETRIES=5
+          RETRY_COUNT=0
+          SUCCESS=false
+          until [ $RETRY_COUNT -ge $MAX_RETRIES ]; do
+            echo "Deployment attempt $((RETRY_COUNT + 1)) of $MAX_RETRIES..."
+            if rsync -avz --delete \
+              -e "ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=15 -o ConnectionAttempts=3" \
+              ./ \
+              ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/${{ secrets.TARGET_DIR }}; then
+              SUCCESS=true
+              break
+            else
+              echo "Warning: Deployment attempt $((RETRY_COUNT + 1)) failed."
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+              if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                SLEEP_TIME=$((RETRY_COUNT * 10))
+                echo "Waiting $SLEEP_TIME seconds before next attempt..."
+                sleep $SLEEP_TIME
+              fi
+            fi
+          done
+          if [ "$SUCCESS" = "false" ]; then
+            echo "Error: Deployment failed after $MAX_RETRIES attempts."
+            exit 1
+          fi
