@@ -178,21 +178,29 @@
             <div class="auth-screen" id="screenForgotVerify">
                 <div class="auth-modal-header">
                     <h2 class="auth-modal-title">Reset Password</h2>
-                    <p class="auth-modal-sub">Enter the code sent to your email and your new password.</p>
+                    <p class="auth-modal-sub" id="forgotVerifySub">Enter the 6-digit verification code sent to your email.</p>
                 </div>
                 <form id="forgotVerifyForm" method="POST" onsubmit="submitAuthForm(event, 'forgot_verify')">
-                    <div class="otp-grid">
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
-                        <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                    <!-- Step 1: OTP Grid & Verify Button -->
+                    <div id="forgotOtpStep">
+                        <div class="otp-grid">
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                            <input type="text" maxlength="1" class="otp-box forgot-otp-input" required>
+                        </div>
+                        <button type="button" class="auth-submit-btn" onclick="verifyOtpAndShowPassword()">Verify Code</button>
                     </div>
-                    <div class="auth-form-group">
-                        <input type="password" id="forgotNewPassword" class="auth-form-input" placeholder="Enter New Password (min 6 chars)" required>
+
+                    <!-- Step 2: Password Input & Update Button -->
+                    <div id="forgotPasswordStep" style="display: none; margin-top: 20px;">
+                        <div class="auth-form-group">
+                            <input type="password" id="forgotNewPassword" class="auth-form-input" placeholder="Enter New Password (min 6 chars)" required>
+                        </div>
+                        <button type="submit" class="auth-submit-btn" id="forgotVerifySubmitBtn">Update Password</button>
                     </div>
-                    <button type="submit" class="auth-submit-btn" id="forgotVerifySubmitBtn">Update Password</button>
                 </form>
                 <div class="auth-modal-footer">
                     Didn't receive code? <a class="auth-link" id="resendForgotOtpLink">Resend Code</a>
@@ -335,6 +343,19 @@
                 const screens = document.querySelectorAll('.auth-screen');
                 screens.forEach(screen => screen.classList.remove('active'));
                 
+                // If entering forgotVerify screen, reset to Step 1 (OTP Input)
+                if (screenName === 'forgotVerify') {
+                    const otpStep = document.getElementById('forgotOtpStep');
+                    const pwStep = document.getElementById('forgotPasswordStep');
+                    const subText = document.getElementById('forgotVerifySub');
+                    if (otpStep && pwStep && subText) {
+                        otpStep.style.display = 'block';
+                        pwStep.style.display = 'none';
+                        subText.textContent = 'Enter the 6-digit verification code sent to your email.';
+                        document.querySelectorAll('.forgot-otp-input').forEach(box => box.value = '');
+                    }
+                }
+                
                 const targetScreen = document.getElementById('screen' + screenName.charAt(0).toUpperCase() + screenName.slice(1));
                 if (targetScreen) {
                     targetScreen.classList.add('active');
@@ -343,6 +364,28 @@
                         setTimeout(() => firstInput.focus(), 150);
                     }
                 }
+            }
+
+            window.verifyOtpAndShowPassword = function() {
+                let otpCode = "";
+                document.querySelectorAll('.forgot-otp-input').forEach(box => otpCode += box.value);
+                
+                if (otpCode.length < 6) {
+                    showAlert('error', 'Please enter the complete 6-digit code.');
+                    return;
+                }
+                
+                // Clear any errors
+                clearAlerts();
+                
+                // Show the password step
+                document.getElementById('forgotOtpStep').style.display = 'none';
+                document.getElementById('forgotPasswordStep').style.display = 'block';
+                document.getElementById('forgotVerifySub').textContent = 'Enter your new secure password below.';
+                setTimeout(() => {
+                    const passInput = document.getElementById('forgotNewPassword');
+                    if (passInput) passInput.focus();
+                }, 150);
             }
 
             // 4. Search Overlay popup triggers
@@ -756,11 +799,21 @@
                 .catch(() => showAlert('error', 'Failed to resend code. Connection error.'));
             });
 
-            // Resend Forgot Password OTP
             document.getElementById('resendForgotOtpLink').addEventListener('click', (e) => {
                 e.preventDefault();
                 clearAlerts();
                 const email = document.getElementById('forgotEmail').value;
+
+                // Reset step elements
+                const otpStep = document.getElementById('forgotOtpStep');
+                const pwStep = document.getElementById('forgotPasswordStep');
+                const subText = document.getElementById('forgotVerifySub');
+                if (otpStep && pwStep && subText) {
+                    otpStep.style.display = 'block';
+                    pwStep.style.display = 'none';
+                    subText.textContent = 'Enter the 6-digit verification code sent to your email.';
+                    document.querySelectorAll('.forgot-otp-input').forEach(box => box.value = '');
+                }
 
                 const formData = new FormData();
                 formData.append('action', 'forgot_request');

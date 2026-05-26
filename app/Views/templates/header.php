@@ -789,6 +789,77 @@
             border-color: var(--text-primary);
         }
 
+        /* Interactive Product Details Popup Modal */
+        .product-modal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 40px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--transition-speed) ease;
+            box-shadow: var(--shadow-lg);
+            z-index: 10001;
+        }
+
+        .auth-modal-overlay.open .product-modal-card {
+            transform: scale(1);
+        }
+
+        .product-modal-content {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .product-modal-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-card-alt);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-modal-left img {
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            border-radius: 12px;
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));
+        }
+
+        .product-modal-right {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+        }
+
+        .size-btn {
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border-color);
+            background-color: var(--bg-card-alt);
+            color: var(--text-primary);
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .size-btn.active, .size-btn:hover {
+            border-color: var(--text-primary);
+            background-color: var(--text-primary);
+            color: var(--bg-card);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -816,6 +887,32 @@
             }
             .stiqr-footer-col {
                 flex: 1 1 100%;
+            }
+            .auth-modal-card {
+                width: calc(100% - 32px);
+                padding: 28px 24px;
+                margin: 16px;
+            }
+            .product-modal-card {
+                width: calc(100% - 32px);
+                padding: 24px;
+                max-height: 90vh;
+                overflow-y: auto;
+                margin: 16px;
+            }
+            .product-modal-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .product-modal-left {
+                padding: 16px;
+            }
+            .product-modal-left img {
+                max-height: 220px;
+            }
+            .product-modal-right {
+                min-height: auto;
+                gap: 16px;
             }
         }
     </style>

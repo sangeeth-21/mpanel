@@ -437,53 +437,6 @@
         gap: 28px;
     }
 
-    /* Popular Colors Card */
-    .colors-card {
-        background-color: var(--bg-card);
-        border-radius: 28px;
-        padding: 24px;
-        box-shadow: var(--shadow-sm);
-        transition: background-color var(--transition-speed) ease;
-    }
-
-    .colors-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--text-muted);
-        margin-bottom: 16px;
-    }
-
-    .colors-dot-row {
-        display: flex;
-        gap: 12px;
-    }
-
-    .color-dot-btn {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        border: 2px solid transparent;
-        cursor: pointer;
-        transition: transform 0.2s ease, border-color 0.2s ease;
-        position: relative;
-    }
-
-    .color-dot-btn::after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
-        border-radius: 50%;
-        background-color: inherit;
-    }
-
-    .color-dot-btn.active {
-        border-color: var(--text-primary);
-        transform: scale(1.1);
     }
 
     /* Vertical Product Card Showcase */
@@ -538,8 +491,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 28px;
         }
-        .colors-card {
-            grid-column: span 2;
         }
     }
 
@@ -559,9 +510,6 @@
         .right-column {
             grid-template-columns: 1fr;
         }
-        .colors-card {
-            grid-column: span 1;
-        }
         .floating-headphones {
             width: 220px;
             height: 270px;
@@ -570,6 +518,10 @@
             width: 290px;
             height: 290px;
         }
+    }
+
+    #heroPrice, #heroMrp, #heroDiscount {
+        transition: opacity 0.3s ease;
     }
 </style>
 
@@ -587,6 +539,12 @@
                 <h1 class="hero-title" id="heroTitle">
                     Inspiring Canvas<br>Artistry.
                 </h1>
+
+                <div class="hero-price-tag" style="margin: 16px 0; display: flex; align-items: baseline; gap: 12px;">
+                    <span id="heroPrice" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$45.00</span>
+                    <span id="heroMrp" style="font-size: 1.25rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">$75.00</span>
+                    <span id="heroDiscount" class="hero-tag" style="background-color: rgba(37, 99, 235, 0.08); color: var(--accent-blue); font-size: 0.8rem; padding: 4px 8px; font-weight: 700; border: none;">40% OFF</span>
+                </div>
 
                 <div class="hero-guide-row" id="heroGuide">
                     <span class="guide-num" id="heroNum">01</span>
@@ -683,7 +641,11 @@
                 <div class="release-details">
                     <span class="hero-tag" style="padding: 4px 10px; font-size: 0.75rem; background-color: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid rgba(239, 68, 68, 0.15);">❤️ Popular</span>
                     <div>
-                        <h3 class="card-title" style="font-size: 1.05rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">Vintage Bauhaus Released</h3>
+                        <h3 class="card-title" style="font-size: 1.05rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">Vintage Bauhaus</h3>
+                        <div style="display: flex; gap: 6px; align-items: baseline; margin-top: 4px; text-shadow: 0 2px 4px rgba(255,255,255,0.8);">
+                            <span style="font-size: 1rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$48.50</span>
+                            <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono); font-weight: 500;">$80.00</span>
+                        </div>
                     </div>
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
                         <div class="rating-stars-badge">
@@ -706,22 +668,16 @@
     <!-- Right Side Area -->
     <div class="right-column">
         
-        <!-- Popular Colors -->
-        <div class="colors-card">
-            <h3 class="colors-title">Popular Frame Colors</h3>
-            <div class="colors-dot-row">
-                <button class="color-dot-btn active" style="background-color: #1e293b;" onclick="selectColor(this)"></button>
-                <button class="color-dot-btn" style="background-color: #b45309;" onclick="selectColor(this)"></button>
-                <button class="color-dot-btn" style="background-color: #15803d;" onclick="selectColor(this)"></button>
-                <button class="color-dot-btn" style="background-color: #b91c1c;" onclick="selectColor(this)"></button>
-                <button class="color-dot-btn" style="background-color: #f59e0b;" onclick="selectColor(this)"></button>
-            </div>
-        </div>
-
         <!-- Product Card 1: Cyberpunk -->
         <div class="product-showcase-card" onclick="openProductModal('cyberpunk')">
             <div class="card-header-row" style="margin-bottom: 0;">
-                <h3 class="card-title">Vibrant Neon<br>Cyberpunk</h3>
+                <div>
+                    <h3 class="card-title">Vibrant Neon<br>Cyberpunk</h3>
+                    <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px;">
+                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$52.00</span>
+                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">$85.00</span>
+                    </div>
+                </div>
                 <button class="small-arrow-btn">
                     <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -740,7 +696,13 @@
                 <img class="product-card-img" src="<?= base_url('assets/poster_line_art.png') ?>" onerror="this.onerror=null; this.src='<?= base_url('public/assets/poster_line_art.png') ?>';" alt="Botanical Line Poster">
             </div>
             <div class="card-header-row" style="margin-bottom: 0; order: 1; justify-content: space-between;">
-                <h3 class="card-title" style="font-size: 1.05rem;">Minimalist Line<br>Botanical Art<br><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Beige series print</span></h3>
+                <div>
+                    <h3 class="card-title" style="font-size: 1.05rem;">Minimalist Line<br>Botanical Art<br><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Beige series print</span></h3>
+                    <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px;">
+                        <span style="font-size: 1.15rem; font-weight: 800; color: var(--accent-blue); font-family: var(--font-mono);">$39.00</span>
+                        <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--text-muted); font-family: var(--font-mono);">$65.00</span>
+                    </div>
+                </div>
                 <button class="small-arrow-btn" style="align-self: flex-start;">
                     <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -765,7 +727,10 @@
                 title: 'Inspiring Canvas<br>Artistry.',
                 desc: 'Transforming your dream spaces with high-end premium wallposters and curated art prints.',
                 image: '<?= base_url("assets/poster_hero.png") ?>',
-                imageFallback: '<?= base_url("public/assets/poster_hero.png") ?>'
+                imageFallback: '<?= base_url("public/assets/poster_hero.png") ?>',
+                price: '$45.00',
+                mrp: '$75.00',
+                discount: '40% OFF'
             },
             {
                 key: 'cyberpunk',
@@ -774,7 +739,10 @@
                 title: 'Retro Neon<br>Cyberpunk.',
                 desc: 'Dive into high-contrast futuristic urban streets with our glowing cyberpunk framed series.',
                 image: '<?= base_url("assets/poster_cyberpunk.png") ?>',
-                imageFallback: '<?= base_url("public/assets/poster_cyberpunk.png") ?>'
+                imageFallback: '<?= base_url("public/assets/poster_cyberpunk.png") ?>',
+                price: '$52.00',
+                mrp: '$85.00',
+                discount: '38% OFF'
             },
             {
                 key: 'bauhaus',
@@ -783,7 +751,10 @@
                 title: 'Geometric Form<br>& Color.',
                 desc: 'Experience primary colors and typographic balance with classic Weimar Bauhaus museum prints.',
                 image: '<?= base_url("assets/poster_bauhaus.png") ?>',
-                imageFallback: '<?= base_url("public/assets/poster_bauhaus.png") ?>'
+                imageFallback: '<?= base_url("public/assets/poster_bauhaus.png") ?>',
+                price: '$48.50',
+                mrp: '$80.00',
+                discount: '39% OFF'
             }
         ];
 
@@ -816,6 +787,9 @@
             heroTitle.style.opacity = '0';
             heroDesc.style.opacity = '0';
             heroImage.style.opacity = '0';
+            document.getElementById('heroPrice').style.opacity = '0';
+            document.getElementById('heroMrp').style.opacity = '0';
+            document.getElementById('heroDiscount').style.opacity = '0';
             
             setTimeout(() => {
                 // Update content
@@ -823,6 +797,9 @@
                 heroTitle.innerHTML = active.title;
                 heroNum.textContent = active.num;
                 heroDesc.innerHTML = `<strong>Curated Prints</strong>${active.desc}`;
+                document.getElementById('heroPrice').textContent = active.price;
+                document.getElementById('heroMrp').textContent = active.mrp;
+                document.getElementById('heroDiscount').textContent = active.discount;
                 
                 // Reset errors and change image src
                 heroImage.onerror = function() {
@@ -839,6 +816,9 @@
                 heroTitle.style.opacity = '1';
                 heroDesc.style.opacity = '1';
                 heroImage.style.opacity = '1';
+                document.getElementById('heroPrice').style.opacity = '1';
+                document.getElementById('heroMrp').style.opacity = '1';
+                document.getElementById('heroDiscount').style.opacity = '1';
             }, 300);
         }
     });
