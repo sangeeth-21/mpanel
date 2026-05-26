@@ -32,6 +32,14 @@ jobs:
           database.default.username = "${{ secrets.DB_USER }}"
           database.default.password = "${{ secrets.DB_PASS }}"
           database.default.DBDriver = MySQLi
+          email.fromEmail = "${{ secrets.SMTP_FROM_EMAIL }}"
+          email.fromName = "${{ secrets.SMTP_FROM_NAME }}"
+          email.protocol = "smtp"
+          email.SMTPHost = "${{ secrets.SMTP_HOST }}"
+          email.SMTPUser = "${{ secrets.SMTP_USER }}"
+          email.SMTPPass = "${{ secrets.SMTP_PASS }}"
+          email.SMTPPort = "${{ secrets.SMTP_PORT }}"
+          email.SMTPCrypto = "${{ secrets.SMTP_CRYPTO }}"
           EOF
 
       - name: Setup SSH

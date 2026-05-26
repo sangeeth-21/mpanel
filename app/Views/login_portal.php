@@ -804,7 +804,7 @@
             --dash-card-bg: #ffffff;
             --dash-card-shadow: rgba(0, 0, 0, 0.03);
             --dash-card-border: rgba(0, 0, 0, 0.05);
-            --accent-terracotta: #e05a47;
+            --accent-terracotta: #2563eb; /* Royal blue for light mode */
             --accent-blue: #38bdf8;
             --text-dark: #111827;
             --text-gray: #6b7280;
@@ -815,10 +815,135 @@
             --dash-card-bg: #0b0f19;
             --dash-card-shadow: rgba(0, 0, 0, 0.3);
             --dash-card-border: rgba(255, 255, 255, 0.05);
-            --accent-terracotta: #f87171;
+            --accent-terracotta: #3b82f6; /* Electric blue for dark mode */
             --accent-blue: #38bdf8;
             --text-dark: #f3f4f6;
             --text-gray: #9ca3af;
+        }
+
+        /* Modern Verification Modals */
+        .auth-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(2, 4, 10, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .auth-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .auth-modal-card {
+            background-color: var(--left-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .auth-modal-overlay.open .auth-modal-card {
+            transform: scale(1);
+        }
+
+        .auth-modal-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .auth-modal-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .otp-inputs-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .otp-input-field, .otp-reset-field {
+            width: 48px;
+            height: 52px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid var(--input-border);
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .otp-input-field:focus, .otp-reset-field:focus {
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .auth-modal-error {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .auth-modal-footer {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 16px;
+        }
+
+        .auth-modal-footer a {
+            color: var(--accent-terracotta);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-modal-footer a:hover {
+            opacity: 0.9;
+        }
+
+        .btn-submit.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .btn-submit.loading::after {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: dbSpinnerRotate 0.6s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes dbSpinnerRotate {
+            to { transform: rotate(360deg); }
         }
 
         body.dashboard-scroll {
@@ -882,7 +1007,7 @@
         }
 
         .db-sidebar-btn:hover {
-            background-color: rgba(224, 90, 71, 0.1);
+            background-color: rgba(37, 99, 235, 0.1);
             color: var(--accent-terracotta);
         }
 
@@ -1075,7 +1200,7 @@
 
         .db-search-input:focus {
             border-color: var(--accent-terracotta);
-            box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         .db-search-icon {
@@ -1151,12 +1276,12 @@
             gap: 10px;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(224, 90, 71, 0.2);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         .db-tasks-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(224, 90, 71, 0.3);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
             filter: brightness(1.08);
         }
 
@@ -1396,7 +1521,7 @@
         }
 
         .db-income-icon-indicator.orange {
-            background-color: rgba(224, 90, 71, 0.1);
+            background-color: rgba(37, 99, 235, 0.1);
             color: var(--accent-terracotta);
         }
 
@@ -1631,7 +1756,7 @@
         }
 
         .db-spark-tag.active {
-            background-color: rgba(224, 90, 71, 0.1);
+            background-color: rgba(37, 99, 235, 0.1);
             color: var(--accent-terracotta);
         }
 
@@ -1675,10 +1800,10 @@
         }
 
         /* Red/salmon gradient layers for circles */
-        .db-profits-ring-1 { stroke: #d65a31; }
-        .db-profits-ring-2 { stroke: #e07a5f; }
-        .db-profits-ring-3 { stroke: #f2cc8f; }
-        .db-profits-ring-4 { stroke: #f4a261; }
+        .db-profits-ring-1 { stroke: #1e3a8a; }
+        .db-profits-ring-2 { stroke: #2563eb; }
+        .db-profits-ring-3 { stroke: #3b82f6; }
+        .db-profits-ring-4 { stroke: #60a5fa; }
 
         .db-profits-label-overlay {
             position: absolute;
@@ -1850,7 +1975,7 @@
 
         .db-act-bar.active {
             opacity: 1;
-            box-shadow: 0 -2px 6px rgba(224, 90, 71, 0.3);
+            box-shadow: 0 -2px 6px rgba(37, 99, 235, 0.3);
         }
 
         .db-act-matrix-dots {
@@ -1939,7 +2064,7 @@
 
         /* Wallet Verification Card */
         .db-wallet-verify-card {
-            border: 1.5px dashed rgba(224, 90, 71, 0.3);
+            border: 1.5px dashed rgba(37, 99, 235, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -1985,11 +2110,11 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(224, 90, 71, 0.15);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
         }
 
         .db-wallet-enable-btn:hover {
-            box-shadow: 0 6px 14px rgba(224, 90, 71, 0.25);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
             filter: brightness(1.08);
         }
 
@@ -2236,6 +2361,13 @@
             <?php else: ?>
                 <!-- Sidebar Floating Pill -->
                 <div class="db-sidebar">
+                    <!-- Profile Icon at top of Sidebar -->
+                    <div class="db-profile-img" style="width: 40px; height: 40px; margin-bottom: 12px; cursor: pointer; box-shadow: 0 2px 6px var(--dash-card-shadow);" onclick="alert('Dwayne Tatum\nCEO Assistant')">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" onerror="this.style.display='none';">
+                        DT
+                    </div>
+                    <div class="db-sidebar-divider" style="margin-bottom: 12px; width: 24px;"></div>
+
                     <button class="db-sidebar-btn active" title="Financial Dashboard">
                         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="3" width="7" height="9"></rect>
@@ -2257,77 +2389,28 @@
                             <line x1="6" y1="20" x2="6" y2="14"></line>
                         </svg>
                     </button>
-                    <div class="db-sidebar-divider"></div>
+                    <div class="db-sidebar-divider" style="width: 24px;"></div>
                     <button class="db-sidebar-btn" title="System Settings" onclick="alert('Configuration manager loaded.')">
                         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                         </svg>
                     </button>
-                    <a href="<?= site_url('/?action=logout') ?>" class="db-sidebar-btn" title="Sign Out" style="margin-top: auto; color: var(--accent-terracotta);">
+                    
+                    <!-- Theme Toggle Button inside Sidebar -->
+                    <button class="db-sidebar-btn theme-switch-container" title="Toggle Theme" style="margin-top: auto; margin-bottom: 8px;">
+                        <svg class="sun-icon-thumb" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon-thumb" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+
+                    <!-- Logout Button -->
+                    <a href="<?= site_url('/?action=logout') ?>" class="db-sidebar-btn" title="Sign Out" style="color: var(--accent-terracotta);">
                         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                             <polyline points="16 17 21 12 16 7"></polyline>
                             <line x1="21" y1="12" x2="9" y2="12"></line>
                         </svg>
                     </a>
-                </div>
-
-                <!-- Header -->
-                <div class="db-header">
-                    <div class="db-header-left">
-                        <div class="db-menu-toggle">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="db-logo-group">
-                            <div class="db-logo-icon">№</div>
-                            <div class="db-logo-title">
-                                <h2>Financial</h2>
-                                <span>Dashboard</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="db-header-right">
-                        <!-- Add Button -->
-                        <div class="db-add-btn" onclick="alert('Quick transaction loader active.')">
-                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </div>
-                        
-                        <!-- Profile Card -->
-                        <div class="db-profile-badge">
-                            <div class="db-profile-img">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" onerror="this.style.display='none';">
-                                DT
-                            </div>
-                            <div class="db-profile-info">
-                                <span class="db-profile-name">Dwayne Tatum</span>
-                                <span class="db-profile-role">CEO Assistant</span>
-                            </div>
-                        </div>
-
-                        <!-- Search Bar -->
-                        <div class="db-search-wrapper">
-                            <svg class="db-search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" class="db-search-input" placeholder="Start searching here ...">
-                        </div>
-
-                        <!-- Theme Toggle Button -->
-                        <div class="theme-switch-container" aria-label="Toggle Theme" style="width: 56px; height: 30px; margin-left: 8px;">
-                            <div class="theme-switch-thumb">
-                                <svg class="sun-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                                <svg class="moon-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Subheader -->
@@ -2345,7 +2428,17 @@
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </button>
-                        <div class="db-cal-icon-wrapper" onclick="alert('Calendar schedule syncing...')">
+                        
+                        <!-- Relocated Search Bar inside Subheader -->
+                        <div class="db-search-wrapper" style="margin-left: 12px; max-width: 200px;">
+                            <svg class="db-search-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="left: 12px;">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" class="db-search-input" placeholder="Search..." style="padding: 10px 12px 10px 34px; font-size: 0.8rem; box-shadow: none; border-radius: 20px;">
+                        </div>
+
+                        <div class="db-cal-icon-wrapper" onclick="alert('Calendar schedule syncing...')" style="margin-left: 8px;">
                             <span class="db-cal-dot"></span>
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -2941,6 +3034,575 @@
                         }
                     }
                 });
+            }
+
+            // Splash Loader Script
+            const splashScreen = document.getElementById('splashScreen');
+            const splashBar = document.getElementById('splashBar');
+            const splashStatus = document.getElementById('splashStatus');
+            
+            const statuses = [
+                { limit: 20, text: 'Resolving SSL Credentials...' },
+                { limit: 50, text: 'Synchronizing Finnger bio-auth...' },
+                { limit: 80, text: 'Rendering visual canvas...' },
+                { limit: 100, text: 'Secured Connection Established.' }
+            ];
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 12) + 5;
+                if (progress > 100) progress = 100;
+                
+                splashBar.style.width = `${progress}%`;
+                
+                const currentStatus = statuses.find(s => progress <= s.limit);
+                if (currentStatus) {
+                    splashStatus.textContent = currentStatus.text;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        splashScreen.classList.add('hidden');
+                    }, 400);
+                }
+            }, 60);
+
+            // System Lock widget toggle behavior
+            const sysLockWidget = document.getElementById('sysLockWidget');
+            const sysLockTxt = document.getElementById('sysLockTxt');
+            if (sysLockWidget && sysLockTxt) {
+                sysLockWidget.addEventListener('click', () => {
+                    const isActive = sysLockTxt.textContent.includes('ACTIVE');
+                    if (isActive) {
+                        sysLockTxt.textContent = 'System Lock: SECURED';
+                        sysLockWidget.style.borderColor = '#10b981';
+                        const scanner = sysLockWidget.querySelector('.db-lock-fingerprint-svg');
+                        if (scanner) scanner.style.stroke = '#10b981';
+                    } else {
+                        sysLockTxt.textContent = 'System Lock: ACTIVE';
+                        sysLockWidget.style.borderColor = '';
+                        const scanner = sysLockWidget.querySelector('.db-lock-fingerprint-svg');
+                        if (scanner) scanner.style.stroke = '';
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Signup OTP Verification Modal -->
+    <div class="auth-modal-overlay" id="signupOtpModal">
+        <div class="auth-modal-card">
+            <h2 class="auth-modal-title">Verify Email Address</h2>
+            <p class="auth-modal-desc">We've sent a 6-digit OTP code to your email. Please enter it below to verify your account.</p>
+            
+            <form id="signupOtpForm">
+                <div class="otp-inputs-row">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-input-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                </div>
+                <div class="auth-modal-error" id="signupOtpError"></div>
+                <button class="btn-submit" type="submit" id="signupOtpSubmit" style="width: 100%;">Verify & Register</button>
+            </form>
+            <div class="auth-modal-footer">
+                Did not get the code? <a href="#" id="resendSignupOtpBtn">Resend Code</a> or <a href="#" onclick="closeModal('signupOtpModal'); return false;">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Email Request Modal -->
+    <div class="auth-modal-overlay" id="forgotRequestModal">
+        <div class="auth-modal-card">
+            <h2 class="auth-modal-title">Forgot Password</h2>
+            <p class="auth-modal-desc">Enter your email address and we'll send you a 6-digit OTP code to reset your password.</p>
+            
+            <form id="forgotRequestForm">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <input class="form-input" type="email" id="forgotEmail" placeholder="stanley@gmail.com" required autocomplete="off">
+                </div>
+                <div class="auth-modal-error" id="forgotRequestError"></div>
+                <button class="btn-submit" type="submit" id="forgotRequestSubmit" style="width: 100%;">Send Reset Code</button>
+            </form>
+            <div class="auth-modal-footer">
+                Remember your password? <a href="#" onclick="closeModal('forgotRequestModal'); return false;">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Reset OTP Modal -->
+    <div class="auth-modal-overlay" id="forgotVerifyModal">
+        <div class="auth-modal-card">
+            <h2 class="auth-modal-title">Reset Password</h2>
+            <p class="auth-modal-desc">Please enter the 6-digit verification code sent to your email along with your new password.</p>
+            
+            <form id="forgotVerifyForm">
+                <div class="otp-inputs-row" style="margin-bottom: 20px;">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                    <input type="text" class="otp-reset-field" maxlength="1" required pattern="[0-9]" autocomplete="off">
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <input class="form-input" type="password" id="forgotNewPassword" placeholder="New Password (min 6 characters)" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <input class="form-input" type="password" id="forgotConfirmPassword" placeholder="Confirm New Password" required>
+                </div>
+                <div class="auth-modal-error" id="forgotVerifyError"></div>
+                <button class="btn-submit" type="submit" id="forgotVerifySubmit" style="width: 100%;">Update Password</button>
+            </form>
+            <div class="auth-modal-footer">
+                Did not get the code? <a href="#" id="resendForgotOtpBtn">Resend Code</a> or <a href="#" onclick="closeModal('forgotVerifyModal'); return false;">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Auth AJAX Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme toggle script
+            const themeToggleBtns = document.querySelectorAll('.theme-switch-container');
+            const htmlElement = document.documentElement;
+
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', savedTheme);
+
+            themeToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const currentTheme = htmlElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    htmlElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    // Sync moon/sun display inside sidebar toggle
+                    syncSidebarThemeIcons(newTheme);
+                });
+            });
+
+            function syncSidebarThemeIcons(theme) {
+                const sidebarToggle = document.querySelector('.db-sidebar .theme-switch-container');
+                if (sidebarToggle) {
+                    const sun = sidebarToggle.querySelector('.sun-icon-thumb');
+                    const moon = sidebarToggle.querySelector('.moon-icon-thumb');
+                    if (theme === 'dark') {
+                        if (sun) sun.style.display = 'none';
+                        if (moon) moon.style.display = 'block';
+                    } else {
+                        if (sun) sun.style.display = 'block';
+                        if (moon) moon.style.display = 'none';
+                    }
+                }
+            }
+            syncSidebarThemeIcons(savedTheme);
+
+            // Auth mode toggle script (Login <-> Signup)
+            const toggleAuthModeBtn = document.getElementById('toggleAuthMode');
+            const panelLeft = document.querySelector('.panel-left');
+            const formTitle = document.getElementById('formTitle');
+            const formSub = document.getElementById('formSub');
+            const formAction = document.getElementById('formAction');
+            const btnSubmit = document.getElementById('btnSubmit');
+            const formFooter = document.getElementById('formFooter');
+            const confirmPassword = document.getElementById('confirm_password');
+            const clientErrorAlert = document.getElementById('clientErrorAlert');
+            const errorAlert = document.getElementById('errorAlert');
+
+            if (toggleAuthModeBtn) {
+                toggleAuthModeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (clientErrorAlert) clientErrorAlert.style.display = 'none';
+                    if (errorAlert) errorAlert.style.display = 'none';
+                    
+                    const isLoginMode = formAction.value === 'login';
+                    if (isLoginMode) {
+                        panelLeft.classList.add('signup-active');
+                        formTitle.innerHTML = 'Holla,<br>Create Account';
+                        formSub.textContent = 'Hey, sign up to create your special place';
+                        formAction.value = 'signup';
+                        btnSubmit.textContent = 'Sign Up';
+                        formFooter.innerHTML = 'Already have an account? <a href="#" id="toggleAuthMode">Sign In</a>';
+                        confirmPassword.setAttribute('required', 'required');
+                    } else {
+                        panelLeft.classList.remove('signup-active');
+                        formTitle.innerHTML = 'Holla,<br>Welcome Back';
+                        formSub.textContent = 'Hey, welcome back to your special place';
+                        formAction.value = 'login';
+                        btnSubmit.textContent = 'Sign In';
+                        formFooter.innerHTML = 'Don\'t have an account? <a href="#" id="toggleAuthMode">Sign Up</a>';
+                        confirmPassword.removeAttribute('required');
+                    }
+                    setTimeout(bindToggleListener, 50);
+                });
+            }
+
+            function bindToggleListener() {
+                const newToggleBtn = document.getElementById('toggleAuthMode');
+                if (newToggleBtn && newToggleBtn !== toggleAuthModeBtn) {
+                    newToggleBtn.replaceWith(newToggleBtn.cloneNode(true));
+                    document.getElementById('toggleAuthMode').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        toggleAuthModeBtn.click();
+                    });
+                }
+            }
+
+            // AJAX Form Submission Handler (Login and Sign Up Request)
+            const authForm = document.getElementById('authForm');
+            if (authForm) {
+                authForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (clientErrorAlert) clientErrorAlert.style.display = 'none';
+                    if (errorAlert) errorAlert.style.display = 'none';
+
+                    const action = formAction.value;
+                    const emailVal = document.getElementById('email').value;
+                    const passwordVal = document.getElementById('password').value;
+
+                    if (action === 'signup') {
+                        const confirmPassVal = confirmPassword.value;
+                        if (passwordVal !== confirmPassVal) {
+                            if (clientErrorAlert) {
+                                clientErrorAlert.textContent = 'Passwords do not match.';
+                                clientErrorAlert.style.display = 'block';
+                            }
+                            return;
+                        }
+                    }
+
+                    // Show loader spinner on button
+                    btnSubmit.classList.add('loading');
+                    const originalBtnText = btnSubmit.textContent;
+                    btnSubmit.textContent = action === 'login' ? 'Signing In...' : 'Sending Code...';
+
+                    const formData = new FormData();
+                    formData.append('email', emailVal);
+                    formData.append('password', passwordVal);
+                    formData.append('action', action === 'login' ? 'login' : 'signup_request');
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        btnSubmit.classList.remove('loading');
+                        btnSubmit.textContent = originalBtnText;
+
+                        if (data.status === 'success') {
+                            if (action === 'login') {
+                                // Redirect to dashboard
+                                window.location.href = data.redirect;
+                            } else {
+                                // SignUp request succeeded, open verification modal
+                                openModal('signupOtpModal');
+                            }
+                        } else {
+                            if (clientErrorAlert) {
+                                clientErrorAlert.textContent = data.message;
+                                clientErrorAlert.style.display = 'block';
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        btnSubmit.classList.remove('loading');
+                        btnSubmit.textContent = originalBtnText;
+                        if (clientErrorAlert) {
+                            clientErrorAlert.textContent = 'A connection error occurred. Please try again.';
+                            clientErrorAlert.style.display = 'block';
+                        }
+                    });
+                });
+            }
+
+            // Signup OTP inputs automatic tab progression
+            const otpInputs = document.querySelectorAll('.otp-input-field');
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Signup OTP Verification submission
+            const signupOtpForm = document.getElementById('signupOtpForm');
+            if (signupOtpForm) {
+                signupOtpForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const otpError = document.getElementById('signupOtpError');
+                    if (otpError) otpError.style.display = 'none';
+
+                    // Compile 6 digit code
+                    let code = '';
+                    otpInputs.forEach(input => code += input.value);
+
+                    const signupOtpSubmit = document.getElementById('signupOtpSubmit');
+                    signupOtpSubmit.classList.add('loading');
+
+                    const formData = new FormData();
+                    formData.append('action', 'signup_verify');
+                    formData.append('otp', code);
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        signupOtpSubmit.classList.remove('loading');
+                        if (data.status === 'success') {
+                            window.location.href = data.redirect;
+                        } else {
+                            if (otpError) {
+                                otpError.textContent = data.message;
+                                otpError.style.display = 'block';
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        signupOtpSubmit.classList.remove('loading');
+                        if (otpError) {
+                            otpError.textContent = 'Connection error. Please try again.';
+                            otpError.style.display = 'block';
+                        }
+                    });
+                });
+            }
+
+            // Forgot Password Link Click
+            const forgotLink = document.querySelector('.forgot-password');
+            if (forgotLink) {
+                forgotLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal('forgotRequestModal');
+                });
+            }
+
+            // Forgot Password OTP request submission
+            const forgotRequestForm = document.getElementById('forgotRequestForm');
+            if (forgotRequestForm) {
+                forgotRequestForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const forgotError = document.getElementById('forgotRequestError');
+                    if (forgotError) forgotError.style.display = 'none';
+
+                    const forgotEmailVal = document.getElementById('forgotEmail').value;
+                    const forgotRequestSubmit = document.getElementById('forgotRequestSubmit');
+                    
+                    forgotRequestSubmit.classList.add('loading');
+
+                    const formData = new FormData();
+                    formData.append('action', 'forgot_request');
+                    formData.append('email', forgotEmailVal);
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        forgotRequestSubmit.classList.remove('loading');
+                        if (data.status === 'success') {
+                            closeModal('forgotRequestModal');
+                            openModal('forgotVerifyModal');
+                        } else {
+                            if (forgotError) {
+                                forgotError.textContent = data.message;
+                                forgotError.style.display = 'block';
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        forgotRequestSubmit.classList.remove('loading');
+                        if (forgotError) {
+                            forgotError.textContent = 'Connection error. Please try again.';
+                            forgotError.style.display = 'block';
+                        }
+                    });
+                });
+            }
+
+            // Forgot Password reset OTP inputs automatic tab progression
+            const otpResetInputs = document.querySelectorAll('.otp-reset-field');
+            otpResetInputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < otpResetInputs.length - 1) {
+                        otpResetInputs[index + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                        otpResetInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Forgot Password verification & Password update submission
+            const forgotVerifyForm = document.getElementById('forgotVerifyForm');
+            if (forgotVerifyForm) {
+                forgotVerifyForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const resetError = document.getElementById('forgotVerifyError');
+                    if (resetError) resetError.style.display = 'none';
+
+                    // Compile code
+                    let code = '';
+                    otpResetInputs.forEach(input => code += input.value);
+
+                    const newPass = document.getElementById('forgotNewPassword').value;
+                    const confirmPass = document.getElementById('forgotConfirmPassword').value;
+
+                    if (newPass !== confirmPass) {
+                        if (resetError) {
+                            resetError.textContent = 'Passwords do not match.';
+                            resetError.style.display = 'block';
+                        }
+                        return;
+                    }
+
+                    const forgotVerifySubmit = document.getElementById('forgotVerifySubmit');
+                    forgotVerifySubmit.classList.add('loading');
+
+                    const formData = new FormData();
+                    formData.append('action', 'forgot_verify');
+                    formData.append('otp', code);
+                    formData.append('new_password', newPass);
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        forgotVerifySubmit.classList.remove('loading');
+                        if (data.status === 'success') {
+                            alert(data.message);
+                            closeModal('forgotVerifyModal');
+                        } else {
+                            if (resetError) {
+                                resetError.textContent = data.message;
+                                resetError.style.display = 'block';
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        forgotVerifySubmit.classList.remove('loading');
+                        if (resetError) {
+                            resetError.textContent = 'Connection error. Please try again.';
+                            resetError.style.display = 'block';
+                        }
+                    });
+                });
+            }
+
+            // Resend Signup OTP click
+            const resendSignupOtpBtn = document.getElementById('resendSignupOtpBtn');
+            if (resendSignupOtpBtn) {
+                resendSignupOtpBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const otpError = document.getElementById('signupOtpError');
+                    if (otpError) otpError.style.display = 'none';
+
+                    const emailVal = document.getElementById('email').value;
+                    const passwordVal = document.getElementById('password').value;
+
+                    const formData = new FormData();
+                    formData.append('email', emailVal);
+                    formData.append('password', passwordVal);
+                    formData.append('action', 'signup_request');
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        alert(data.message);
+                    })
+                    .catch(err => {
+                        alert('Failed to resend verification code. Connection error.');
+                    });
+                });
+            }
+
+            // Resend Forgot Password OTP click
+            const resendForgotOtpBtn = document.getElementById('resendForgotOtpBtn');
+            if (resendForgotOtpBtn) {
+                resendForgotOtpBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const resetError = document.getElementById('forgotVerifyError');
+                    if (resetError) resetError.style.display = 'none';
+
+                    const forgotEmailVal = document.getElementById('forgotEmail').value;
+
+                    const formData = new FormData();
+                    formData.append('email', forgotEmailVal);
+                    formData.append('action', 'forgot_request');
+
+                    fetch('<?= site_url('/') ?>', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        alert(data.message);
+                    })
+                    .catch(err => {
+                        alert('Failed to resend reset code. Connection error.');
+                    });
+                });
+            }
+
+            // Modal utility open/close functions
+            window.openModal = function(modalId) {
+                const overlay = document.getElementById(modalId);
+                if (overlay) {
+                    overlay.classList.add('open');
+                    const firstInput = overlay.querySelector('input');
+                    if (firstInput) {
+                        setTimeout(() => firstInput.focus(), 150);
+                    }
+                }
+            }
+
+            window.closeModal = function(modalId) {
+                const overlay = document.getElementById(modalId);
+                if (overlay) {
+                    overlay.classList.remove('open');
+                    const inputs = overlay.querySelectorAll('input');
+                    inputs.forEach(input => input.value = '');
+                    const errorDiv = overlay.querySelector('.auth-modal-error');
+                    if (errorDiv) errorDiv.style.display = 'none';
+                }
             }
 
             // Splash Loader Script
